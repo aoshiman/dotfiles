@@ -1,0 +1,4 @@
+#screen autoload
+#http://fkmn.exblog.jp/6116062/
+[ ${STY} ] || screen -rx || screen -D -RR
+
