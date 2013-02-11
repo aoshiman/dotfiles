@@ -206,5 +206,5 @@ esac
 ## load user .zshrc configuration file
 #
 [ -f ${HOME}/.zshrc.screen_autoload ] && source ${HOME}/.zshrc.screen_autoload
-[ -f ${HOME}/.zshrc.virtualenvwrapper ] && source ${HOME}/.zshrc.virtualenvwrapper
+[ -f ${HOME}/.zshrc.python ] && source ${HOME}/.zshrc.python
 [ -f ${HOME}/.zshrc.osx ] && source ${HOME}/.zshrc.osx
