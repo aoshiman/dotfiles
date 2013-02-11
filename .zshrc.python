@@ -1,3 +1,6 @@
 #Python VirtualenvWrapper
 export WORKON_HOME=$HOME/.virtualenvs
 . /usr/local/bin/virtualenvwrapper.sh
+
+#local cache with pip
+export PIP_DOWNLOAD_CACHE=$HOME/.pip_download_cache
