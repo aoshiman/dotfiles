@@ -105,8 +105,7 @@ set showmatch       " 括弧入力で対応する括弧を一瞬強調
 """ template
 autocmd BufNewFile *.py 0r ~/.vim/template/python.txt
 
-
-
+""" Function
 """ create directory automatically
 augroup vimrc-auto-mkdir
 	autocmd!
@@ -119,8 +118,22 @@ augroup vimrc-auto-mkdir
 	endfunction
 augroup END
 
+""" 保存時に行末の空白を除去する
+autocmd BufWritePre * :%s/\s\+$//ge
+""" 保存時にtabをスペースに変換する
+autocmd BufWritePre * :%s/\t/  /ge
+
+
+""" Config for Plugin
 """ NERDTree
 let file_name = expand("%")
 if has('vim_starting') &&  file_name == ""
     autocmd VimEnter * NERDTree ./
 endif
+
+""" quickrun + vimproc
+let g:quickrun_config = {}
+let g:quickrun_config['*'] = {'runner': 'vimproc'}
+let g:quickrun_no_default_key_mappings = 1
+nmap <Leader>p <Plug>(quickrun)
+nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
