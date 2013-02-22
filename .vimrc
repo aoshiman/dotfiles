@@ -4,7 +4,7 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-""" Vundle自身のインストール
+""" Vundle自身
 Bundle 'gmarik/vundle'
 
 """ カラースキーム
@@ -32,15 +32,15 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'Shougo/vimproc'
 Bundle 'thinca/vim-quickrun'
+Bundle 'scrooloose/nerdcommenter'
 
 filetype plugin indent on
-
 
 """ シンタックスの色づけ有効
 syntax enable
 set background=dark
 
-""" カラースキーム 
+""" カラースキーム
 colorscheme solarized
 
 """ インデント
@@ -60,7 +60,7 @@ nnoremap : ;
 " .vimrcを開く
 nnoremap <Leader>v  :<C-u>edit $MYVIMRC<CR>
 " source ~/.vimrc を実行する。
-nnoremap <Leader>s  :<C-u>source $MYVIMRC<CR> 
+nnoremap <Leader>s  :<C-u>source $MYVIMRC<CR>
 
 """ 検索
 set hlsearch        " 検索文字列を色づけ
@@ -108,14 +108,14 @@ autocmd BufNewFile *.py 0r ~/.vim/template/python.txt
 """ Function
 """ create directory automatically
 augroup vimrc-auto-mkdir
-	autocmd!
-	autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'),v:cmdbang)
-	function! s:auto_mkdir(dir, force)
-		if !isdirectory(a:dir) && (a:force ||
-			 \ input(printf('"%s" does not exist. Create? [y/N]', a:dir)) =~? '^y\%[es]$')
-			call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
-		endif
-	endfunction
+  autocmd!
+  autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'),v:cmdbang)
+  function! s:auto_mkdir(dir, force)
+    if !isdirectory(a:dir) && (a:force ||
+       \ input(printf('"%s" does not exist. Create? [y/N]', a:dir)) =~? '^y\%[es]$')
+      call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
+    endif
+  endfunction
 augroup END
 
 """ 保存時に行末の空白を除去する
@@ -137,3 +137,9 @@ let g:quickrun_config['*'] = {'runner': 'vimproc'}
 let g:quickrun_no_default_key_mappings = 1
 nmap <Leader>p <Plug>(quickrun)
 nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
+
+""" Nerd_Commenter の基本設定
+let g:NERDCreateDefaultMappings = 0
+let NERDSpaceDelims = 1
+nmap <Leader>c <Plug>NERDCommenterToggle
+vmap <Leader>c <Plug>NERDCommenterToggle
