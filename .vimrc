@@ -7,6 +7,9 @@ call vundle#rc()
 """ Vundle自身
 Bundle 'gmarik/vundle'
 
+""" 日本語ヘルプ
+Bundle 'vim-jp/vimdoc-ja'
+
 """ カラースキーム
 Bundle 'altercation/vim-colors-solarized'
 
