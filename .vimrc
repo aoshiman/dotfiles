@@ -64,6 +64,8 @@ nnoremap : ;
 nnoremap <Leader>v  :<C-u>edit $MYVIMRC<CR>
 " source ~/.vimrc を実行する。
 nnoremap <Leader>s  :<C-u>source $MYVIMRC<CR>
+" ヘルプを右側に縦分割して開く
+nnoremap <Leader>h :<C-u>vert bel h<Space>
 
 """ 検索
 set hlsearch        " 検索文字列を色づけ
