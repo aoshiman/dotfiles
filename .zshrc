@@ -36,7 +36,7 @@ case ${UID} in
     #http://qiita.com/c200680c26e509a4f41c
     PROMPT="%m %{${fg[yellow]}%}%~%{${reset_color}%}%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(*'-') <!(*;-;%)? <)%{${reset_color}%}"
     PROMPT2='[%n]> '
-    SPROMPT="%{$fg[red]%}%{$suggest%}(*'~'%)? < もしかして %B%r%b %{$fg[red]%}かな? [そう!(y), 違う!(n),a,e]:${reset_color}" 
+    SPROMPT="%{$fg[red]%}%{$suggest%}(*'~'%)? < もしかして %B%r%b %{$fg[red]%}かな? [そう!(y), 違う!(n),a,e]:${reset_color}"
     ;;
 esac
 
@@ -144,7 +144,7 @@ linux*)
     ;;
 esac
 
-alias la="ls -a"
+alias la="ls -al"
 alias lf="ls -F"
 alias ll="ls -l"
 
@@ -186,7 +186,7 @@ esac
 # in screen
 case "${TERM}" in
 screen)
-	preexec() {
+  preexec() {
         echo -ne "\ek#${1%% *}\e\\"
     }
     precmd() {
