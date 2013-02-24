@@ -135,6 +135,9 @@ let file_name = expand("%")
 if has('vim_starting') &&  file_name == ""
     autocmd VimEnter * NERDTree ./
 endif
+let NERDTreeShowHidden = 1
+""" neでトグル
+noremap ne :NERDTreeToggle<CR>
 
 """ quickrun + vimproc
 let g:quickrun_config = {}
