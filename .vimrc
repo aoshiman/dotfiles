@@ -16,9 +16,10 @@ Bundle 'altercation/vim-colors-solarized'
 """ ステータスライン
 Bundle 'Lokaltog/vim-powerline'
 
-""" ファイラー
+""" ファイラー・バッファ管理
 Bundle 'scrooloose/nerdtree'
 Bundle 'Shougo/unite.vim'
+Bundle 'sandeepcr529/Buffet.vim'
 
 """ 文字コード自動判定
 Bundle 'banyan/recognize_charcode.vim'
@@ -26,7 +27,7 @@ Bundle 'banyan/recognize_charcode.vim'
 """ テンプレート
 Bundle 'mattn/sonictemplate-vim'
 
-""" 開発Tools
+""" 開発支援
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'davidhalter/jedi-vim'
@@ -36,6 +37,10 @@ Bundle 'tpope/vim-surround'
 Bundle 'Shougo/vimproc'
 Bundle 'thinca/vim-quickrun'
 Bundle 'scrooloose/nerdcommenter'
+
+""" ユーティリティ
+Bundle 'sudo.vim'
+
 
 filetype plugin indent on
 
@@ -151,3 +156,6 @@ let g:NERDCreateDefaultMappings = 0
 let NERDSpaceDelims = 1
 nmap <Leader>c <Plug>NERDCommenterToggle
 vmap <Leader>c <Plug>NERDCommenterToggle
+
+""" Beffet.vim
+nnoremap <silent><Leader>l :Bufferlist<CR>
