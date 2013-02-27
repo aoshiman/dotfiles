@@ -61,11 +61,11 @@ set softtabstop=4   " キーボードでtab 文字を入力した時の入力幅
 set backspace=indent,eol,start  " BS で indent,改行,挿入開始前を削除
 set smarttab        " BS でインデント幅を削除
 
-"""キーマップ
+"""キーマップ（プラグイン固有のキーマップは下のほうに）
 " USKeyboard対策
 nnoremap ; :
 nnoremap : ;
-" .vimrcを開く
+" .vimrcを開く$MYVIMRCは~/.vimrcに関する環境変数
 nnoremap <Leader>v  :<C-u>edit $MYVIMRC<CR>
 " source ~/.vimrc を実行する。
 nnoremap <Leader>s  :<C-u>source $MYVIMRC<CR>
@@ -116,7 +116,7 @@ set showmatch       " 括弧入力で対応する括弧を一瞬強調
 autocmd BufNewFile *.py 0r ~/.vim/template/python.txt
 
 """ Function
-""" create directory automatically
+""" create directory automatically 存在しないディレクトリ作成
 augroup vimrc-auto-mkdir
   autocmd!
   autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'),v:cmdbang)
