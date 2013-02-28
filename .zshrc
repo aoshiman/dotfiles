@@ -13,11 +13,9 @@ esac
 ## User Path
 #export PATH=/opt/local/bin:/opt/local/sbin/:$PATH
 export PATH=/usr/local/bin:$PATH
-#export MANPATH=/opt/local/man:$MANPATH
-#export TERM=dtterm
-#export PYTHONPATH=/Users/hirohisa/python/lib/python2.6/site-packages
+#export TERM=dtterm #iTermで矢印が効かない時の対応らしいが使ってない
 export EDITOR='vim'
-export PYTHONSTARTUP=~/.pythonstartup
+#export PYTHONSTARTUP=~/.pythonstartup #不要？
 
 
 ## Default shell configuration
