@@ -1,9 +1,12 @@
 [user]
-  name = aoshiman
-  email = men.katame.nori.oome@gmail.com
+    name = aoshiman
+    email = men.katame.nori.oome@gmail.com
 
 [color]
     ui = auto
+
+[core]
+    excludesfile = ~/.gitignore
 
 [alias]
     oneline = log --graph --date=short --pretty='%C(yellow)%h%Creset %C(cyan bold)%d%Creset %s %Cgreen[%cd]%Creset' --decorate
