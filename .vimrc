@@ -41,7 +41,8 @@ Bundle 'scrooloose/nerdcommenter'
 
 """ ユーティリティ
 Bundle 'sudo.vim'
-
+Bundle 'Shougo/vimshell'
+Bundle 'Shougo/neocomplcache'
 
 filetype plugin indent on
 
@@ -137,10 +138,10 @@ autocmd BufWritePre * :%s/\t/  /ge
 
 """ Config for Plugin
 """ NERDTree
-let file_name = expand("%")
-if has('vim_starting') &&  file_name == ""
-    autocmd VimEnter * NERDTree ./
-endif
+" let file_name = expand("%")
+" if has('vim_starting') &&  file_name == ""
+    " autocmd VimEnter * NERDTree ./
+" endif
 let NERDTreeShowHidden = 1
 """ neでトグル
 noremap ne :NERDTreeToggle<CR>
