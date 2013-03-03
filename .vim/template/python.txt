@@ -1,2 +1,20 @@
 #!/usr/bin/env python
 #coding: utf-8
+
+"""
+
+"""
+__author__ = "aoshiman <men.katame.nori.oome@gmail.com>"
+__version__ = "0.0.0"
+__date__    = "01 November 2011"
+
+
+def main():
+    """
+
+    """
+
+if __name__ == '__main__':
+    main()
+
+
