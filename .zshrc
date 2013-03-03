@@ -41,7 +41,7 @@ esac
 # auto change directory
 #
 setopt auto_cd
-function chpwd() { ls }
+function chpwd() { ls -al}
 
 #http://qiita.com/c200680c26e509a4f41c
 setopt re_match_pcre
@@ -152,8 +152,17 @@ alias df="df -h"
 alias su="su -l"
 
 #cdup
-alias -g ....="../.."
-alias -g ......="../../.."
+# alias -g ....="../.."
+# alias -g ......="../../.."
+
+function cdup() {
+echo
+cd ..
+zle reset-prompt
+}
+zle -N cdup
+bindkey '\^' cdup
+
 
 case "${TERM}" in
 xterm|xterm-color)
