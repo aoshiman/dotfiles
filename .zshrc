@@ -26,6 +26,14 @@ autoload colors
 colors
 autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 
+#http://qiita.com/c200680c26e509a4f41c
+setopt re_match_pcre
+setopt prompt_subst
+
+fpath=(${HOME}/.zsh/functions/Completion ${fpath})
+autoload -U compinit
+compinit -u
+
 function prompt-git-current-branch {
     local name st color gitdir action
     if [[ "$PWD" =~ '/\.git(/.*)?$' ]]; then
@@ -52,10 +60,6 @@ function prompt-git-current-branch {
 
     echo "$color$name$action%f%b "
 }
-
-#http://qiita.com/c200680c26e509a4f41c
-setopt re_match_pcre
-setopt prompt_subst
 
 case ${UID} in
 0)
@@ -132,13 +136,6 @@ setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_ignore_dups     # ignore duplication command history list
 setopt share_history        # share command history data
-
-
-## Completion configuration
-#
-fpath=(${HOME}/.zsh/functions/Completion ${fpath})
-autoload -U compinit
-compinit -u
 
 
 ## zsh editor
