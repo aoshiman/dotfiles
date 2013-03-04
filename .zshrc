@@ -24,6 +24,39 @@ export EDITOR='vim'
 #
 autoload colors
 colors
+autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
+
+function prompt-git-current-branch {
+    local name st color gitdir action
+    if [[ "$PWD" =~ '/\.git(/.*)?$' ]]; then
+        return
+    fi
+    name=`git rev-parse --abbrev-ref=loose HEAD 2> /dev/null`
+    if [[ -z $name ]]; then
+        return
+    fi
+
+    gitdir=`git rev-parse --git-dir 2> /dev/null`
+    action=`VCS_INFO_git_getaction "$gitdir"` && action="($action)"
+
+    st=`git status 2> /dev/null`
+    if [[ "$st" =~ "(?m)^nothing to" ]]; then
+        color=%F{green}
+    elif [[ "$st" =~ "(?m)^nothing added" ]]; then
+        color=%F{yellow}
+    elif [[ "$st" =~ "(?m)^# Untracked" ]]; then
+        color=%B%F{red}
+    else
+        color=%F{red}
+    fi
+
+    echo "$color$name$action%f%b "
+}
+
+#http://qiita.com/c200680c26e509a4f41c
+setopt re_match_pcre
+setopt prompt_subst
+
 case ${UID} in
 0)
     PROMPT="%{${fg[cyan]}%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') %B%{${fg[red]}%}%/#%{${reset_color}%}%b "
@@ -32,7 +65,7 @@ case ${UID} in
     ;;
 *)
     #http://qiita.com/c200680c26e509a4f41c
-    PROMPT="%m %{${fg[yellow]}%}%~%{${reset_color}%}%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(*'-') <!(*;-;%)? <)%{${reset_color}%}"
+    PROMPT="%m %{${fg[yellow]}%}`prompt-git-current-branch`%~%{${reset_color}%}%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(*'-') <!(*;-;%)? <)%{${reset_color}%}"
     PROMPT2='[%n]> '
     SPROMPT="%{$fg[red]%}%{$suggest%}(*'~'%)? < もしかして %B%r%b %{$fg[red]%}かな? [そう!(y), 違う!(n),a,e]:${reset_color}"
     ;;
@@ -42,10 +75,6 @@ esac
 #
 setopt auto_cd
 function chpwd() { ls -al}
-
-#http://qiita.com/c200680c26e509a4f41c
-setopt re_match_pcre
-setopt prompt_subst
 
 # auto directory pushd that you can get dirs list by cd -[tab]
 #

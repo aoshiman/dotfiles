@@ -10,3 +10,8 @@
 
 [alias]
     oneline = log --graph --date=short --pretty='%C(yellow)%h%Creset %C(cyan bold)%d%Creset %s %Cgreen[%cd]%Creset' --decorate
+    co = checkout
+    br = branch
+    ba = branch -a
+
+
