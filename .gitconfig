@@ -9,9 +9,16 @@
     excludesfile = ~/.gitignore
 
 [alias]
+    #log
     oneline = log --graph --date=short --pretty='%C(yellow)%h%Creset %C(cyan bold)%d%Creset %s %Cgreen[%cd]%Creset' --decorate
+    #commit
+    ad = add
+    a = add
+    cm = commit
     co = checkout
+    #branch
     br = branch
     ba = branch -a
-
-
+    #other
+    st = status
+    s = status
