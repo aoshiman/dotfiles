@@ -72,6 +72,7 @@ case ${UID} in
     PROMPT="%m %{${fg[yellow]}%}%~%{${reset_color}%}%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(*'-') <!(*;-;%)? <)%{${reset_color}%}"
     PROMPT2='[%n]> '
     SPROMPT="%{$fg[red]%}%{$suggest%}(*'~'%)? < もしかして %B%r%b %{$fg[red]%}かな? [そう!(y), 違う!(n),a,e]:${reset_color}"
+    RPROMPT='`prompt-git-current-branch`'
     ;;
 esac
 
