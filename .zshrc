@@ -180,10 +180,6 @@ alias df="df -h"
 
 alias su="su -l"
 
-#cdup
-# alias -g ....="../.."
-# alias -g ......="../../.."
-
 function cdup() {
 echo
 cd ..
