@@ -1,7 +1,12 @@
-# users generic .zshrc file for zsh(1)
-## Environment variable configuration
-#
-# LANG
+################################################################################
+#{{{ 環境設定
+export EDITOR='vim'
+#export TERM=dtterm #iTermで矢印が効かない時の対応らしいが使ってない
+
+
+#}}}
+
+#{{{LANG
 #
 export LANG=ja_JP.UTF-8
 case ${UID} in
@@ -10,13 +15,16 @@ case ${UID} in
     ;;
 esac
 
-## User Path
+
+#}}}
+
+#{{{User Path
 #export PATH=/opt/local/bin:/opt/local/sbin/:$PATH
 export PATH=/usr/local/bin:$PATH
-#export TERM=dtterm #iTermで矢印が効かない時の対応らしいが使ってない
-export EDITOR='vim'
 #export PYTHONSTARTUP=~/.pythonstartup #不要？
 
+
+#}}}
 
 ## Default shell configuration
 #
