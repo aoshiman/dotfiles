@@ -1,13 +1,12 @@
-################################################################################
-#{{{ 環境設定
+###{{{ 環境設定
 export EDITOR='vim'
 #export TERM=dtterm #iTermで矢印が効かない時の対応らしいが使ってない
 
 
-#}}}
+###}}}
 
-#{{{LANG
-#
+
+###{{{ LANG
 export LANG=ja_JP.UTF-8
 case ${UID} in
 0)
@@ -16,24 +15,23 @@ case ${UID} in
 esac
 
 
-#}}}
+###}}}
 
-#{{{User Path
+
+###{{{User Path
 #export PATH=/opt/local/bin:/opt/local/sbin/:$PATH
 export PATH=/usr/local/bin:$PATH
 #export PYTHONSTARTUP=~/.pythonstartup #不要？
 
 
-#}}}
+###}}}
 
-## Default shell configuration
-#
-# set prompt
-#
-autoload colors
+###{{{ 外観に関する設定
+
+autoload -Uz colors
 colors
-autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 
+autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 setopt re_match_pcre
 setopt prompt_subst
 
@@ -86,10 +84,21 @@ case ${UID} in
     ;;
 esac
 
+# コマンドを実行するときに右プロンプトを消す。
+setopt transient_rprompt
+
+# コマンドラインでも # 以降をコメントと見なす
+setopt interactive_comments
+
+
+###}}}
+
+
+###{{{ 補完など
 # auto change directory
 #
 setopt auto_cd
-function chpwd() { ls -al }
+function chpwd() { ls }
 
 # auto directory pushd that you can get dirs list by cd -[tab]
 #
@@ -111,19 +120,34 @@ setopt noautoremoveslash
 #
 setopt nolistbeep
 
+# 補完キー（Tab, Ctrl+I) を連打するだけで順に補完候補を自動で補完する
+setopt auto_menu
 
-## Keybind configuration
-#
-# emacs like keybind (e.x. Ctrl-a gets to line head and Ctrl-e gets
-#   to end) and something additions
-#
+# コマンドラインの引数で --prefix=/usr などの = 以降でも補完できる
+setopt magic_equal_subst
+
+# カッコの対応などを自動的に補完する
+setopt auto_param_keys
+
+
+###}}}
+
+
+###{{{ キーバインド
+
 bindkey -v
-bindkey "^[[1~" beginning-of-line # Home gets to line head
-bindkey "^[[4~" end-of-line # End gets to line end
-bindkey "^[[3~" delete-char # Del
+
+# bindkey -v でもコマンドラインスタック使う
+bindkey 'eq' push-line
+
+# 補完候補のメニュー選択で、矢印キーの代わりにhjklで移動出来るようにする。
+zmodload zsh/complist
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
 
 # historical backward/forward search with linehead string binded to ^P/^N
-#
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
@@ -133,13 +157,12 @@ bindkey "\\ep" history-beginning-search-backward-end
 bindkey "\\en" history-beginning-search-forward-end
 bindkey "^r" history-incremental-search-backward
 
-# reverse menu completion binded to Shift-Tab
-#
-bindkey "\e[Z" reverse-menu-complete
+
+###}}}
 
 
-## Command history configuration
-#
+###{{{ 履歴(history)に関する設定
+
 HISTFILE=${HOME}/.zsh_history
 HISTSIZE=50000
 SAVEHIST=50000
@@ -149,21 +172,12 @@ setopt hist_ignore_dups     # ignore duplication command history list
 setopt share_history        # share command history data
 
 
-## zsh editor
-#
-autoload zed
+
+###}}}
 
 
-## Prediction configuration
-#
-#autoload predict-on
-#predict-off
+###{{{ alias
 
-
-## Alias configuration
-#
-# expand aliases before completing
-#
 setopt complete_aliases     # aliased ls needs if file/dir completions work
 
 alias where="command -v"
@@ -188,6 +202,11 @@ alias df="df -h"
 
 alias su="su -l"
 
+###}}}
+
+
+###{{{ Function
+
 function cdup() {
 echo
 cd ..
@@ -196,6 +215,10 @@ zle reset-prompt
 zle -N cdup
 bindkey '\^' cdup
 
+###}}}
+
+
+###{{{ Other
 
 case "${TERM}" in
 xterm|xterm-color)
@@ -246,8 +269,13 @@ xterm|xterm-color|kterm|kterm-color)
     ;;
 esac
 
-## load user .zshrc configuration file
-#
+###}}}
+
+
+###{{{ load user .zshrc configuration file
+
 [ -f ${HOME}/.zshrc.screen_autoload ] && source ${HOME}/.zshrc.screen_autoload
 [ -f ${HOME}/.zshrc.python ] && source ${HOME}/.zshrc.python
 [ -f ${HOME}/.zshrc.osx ] && source ${HOME}/.zshrc.osx
+
+###}}}
