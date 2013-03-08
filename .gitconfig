@@ -31,7 +31,9 @@
 
     #stash
     sl = stash list
-    slp = stash list -p
+    #slp = stash list -p
+    shp = stash show -p
     sp = stash pop
     ss = stash save
+    sd = stash drop
 

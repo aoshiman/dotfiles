@@ -81,7 +81,7 @@ esac
 # auto change directory
 #
 setopt auto_cd
-function chpwd() { ls -al}
+function chpwd() { ls -al }
 
 # auto directory pushd that you can get dirs list by cd -[tab]
 #
