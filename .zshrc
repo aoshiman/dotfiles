@@ -1,3 +1,7 @@
+#色々コピペしたけど下記URLには特に参考にさせていただきました
+#http://yuyunko.hatenablog.com/entry/20101112/1289551129
+#コピペしておきながら全部把握していない。。
+
 ###{{{ 環境設定
 export EDITOR='vim'
 #export TERM=dtterm #iTermで矢印が効かない時の対応らしいが使ってない
@@ -6,7 +10,7 @@ export EDITOR='vim'
 ###}}}
 
 
-###{{{ LANG
+###{{{ 言語設定
 export LANG=ja_JP.UTF-8
 case ${UID} in
 0)
@@ -18,16 +22,16 @@ esac
 ###}}}
 
 
-###{{{User Path
+###{{{ パスの設定
 #export PATH=/opt/local/bin:/opt/local/sbin/:$PATH
 export PATH=/usr/local/bin:$PATH
-#export PYTHONSTARTUP=~/.pythonstartup #不要？
-
+#zsh function
+fpath=(${HOME}/.zsh/functions/Completion ${fpath})
 
 ###}}}
 
-###{{{ 外観に関する設定
 
+###{{{ 外観に関する設定
 autoload -Uz colors
 colors
 
@@ -35,7 +39,6 @@ autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 setopt re_match_pcre
 setopt prompt_subst
 
-fpath=(${HOME}/.zsh/functions/Completion ${fpath})
 autoload -U compinit
 compinit -u
 
@@ -69,6 +72,7 @@ function prompt-git-current-branch {
     echo "$color$name$action%f%b "
 }
 
+# プロンプト
 case ${UID} in
 0)
     PROMPT="%{${fg[cyan]}%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') %B%{${fg[red]}%}%/#%{${reset_color}%}%b "
@@ -77,6 +81,7 @@ case ${UID} in
     ;;
 *)
     #http://qiita.com/c200680c26e509a4f41c を参考にしてみた
+    #http://0xcc.net/blog/archives/000032.html 深いディレクトリのパスを短くする
     PROMPT="%m %{${fg[yellow]}%}%(5~,%-2~/.../%2~,%~)%{${reset_color}%}%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(*'-') <!(*;-;%)? <)%{${reset_color}%}"
     PROMPT2='[%n]> '
     SPROMPT="%{$fg[red]%}%{$suggest%}(*'~'%)? < もしかして %B%r%b %{$fg[red]%}かな? [そう!(y), 違う!(n),a,e]:${reset_color}"
@@ -138,7 +143,15 @@ setopt auto_param_keys
 bindkey -v
 
 # bindkey -v でもコマンドラインスタック使う
-bindkey 'eq' push-line
+# http://qiita.com/items/1f2c7793944b1f6cc346
+show_buffer_stack() {
+    POSTDISPLAY="
+    stack: $LBUFFER"
+    zle push-line-or-edit
+}
+zle -N show_buffer_stack
+setopt noflowcontrol
+bindkey '^Q' show_buffer_stack
 
 # 補完候補のメニュー選択で、矢印キーの代わりにhjklで移動出来るようにする。
 zmodload zsh/complist
