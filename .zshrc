@@ -95,6 +95,17 @@ setopt transient_rprompt
 # コマンドラインでも # 以降をコメントと見なす
 setopt interactive_comments
 
+# set terminal title including current directory
+case "${TERM}" in
+*)
+    preexec() {
+        echo -en "\ek${1%% 2%% *}\e\\"
+    }
+    precmd() {
+        echo -en "\ek$(basename $(pwd))\e\\"
+    }
+    ;;
+esac
 
 ###}}}
 
@@ -233,6 +244,7 @@ bindkey '\^' cdup
 
 ###{{{ Other
 
+
 case "${TERM}" in
 xterm|xterm-color)
     export LSCOLORS=exfxcxdxbxegedabagacad
@@ -261,26 +273,6 @@ jfbterm-color)
     ;;
 esac
 
-# set terminal title including current directory
-# in screen
-case "${TERM}" in
-screen)
-  preexec() {
-        echo -ne "\ek#${1%% *}\e\\"
-    }
-    precmd() {
-        echo -ne "\ek$(basename $(pwd))\e\\"
-    }
-esac
-
-# other
-case "${TERM}" in
-xterm|xterm-color|kterm|kterm-color)
-    precmd() {
-        echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
-    }
-    ;;
-esac
 
 ###}}}
 
