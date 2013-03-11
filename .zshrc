@@ -95,17 +95,14 @@ setopt transient_rprompt
 # コマンドラインでも # 以降をコメントと見なす
 setopt interactive_comments
 
-# set terminal title including current directory
-case "${TERM}" in
-*)
-    preexec() {
-        echo -en "\ek${1%% 2%% *}\e\\"
-    }
-    precmd() {
-        echo -en "\ek$(basename $(pwd))\e\\"
-    }
-    ;;
-esac
+# set screen terminal title
+# Thanks https://github.com/afukuhara/dot.files/blob/master/.zshrc
+preexec() {
+    [ -n "${STY}" ] && echo -en "\ek${1%% 2%% *}\e\\"
+}
+precmd() {
+     [ -n "${STY}" ] && echo -en "\ek$(basename $(pwd))\e\\"
+}
 
 ###}}}
 
