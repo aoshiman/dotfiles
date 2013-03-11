@@ -101,7 +101,7 @@ preexec() {
     [ -n "${STY}" ] && echo -en "\ek${1%% 2%% *}\e\\"
 }
 precmd() {
-     [ -n "${STY}" ] && echo -en "\ek$(basename $(pwd))\e\\"
+    [ -n "${STY}" ] && echo -en "\ek$(basename $(pwd))\e\\"
 }
 
 ###}}}
