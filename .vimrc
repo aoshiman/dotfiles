@@ -169,3 +169,38 @@ vmap <Leader>c <Plug>NERDCommenterToggle
 
 """ Beffet.vim
 nnoremap <silent><Leader>l :Bufferlist<CR>
+
+""" Config for Vim-ref
+"" Config for Ref webdict
+" URL http://www.karakaram.com/20120726-vim-ref
+" URL2 http://www.karakaram.com/ref-webdict
+" ヴィジュアルモード等でヤンクした単語をコマンドラインモード
+" にペースト C-R + "
+
+let g:ref_source_webdict_sites = {
+\   'je': {
+\     'url': 'http://dictionary.infoseek.ne.jp/jeword/%s',
+\   },
+\   'ej': {
+\     'url': 'http://dictionary.infoseek.ne.jp/ejword/%s',
+\   },
+\   'wiki': {
+\     'url': 'http://ja.wikipedia.org/wiki/%s',
+\   },
+\ }
+
+" デフォルトサイト
+let g:ref_source_webdict_sites.default = 'ej'
+
+" 出力に対するフィルタ。最初の数行を削除
+function! g:ref_source_webdict_sites.je.filter(output)
+  return join(split(a:output, "\n")[15 :], "\n")
+endfunction
+function! g:ref_source_webdict_sites.ej.filter(output)
+  return join(split(a:output, "\n")[15 :], "\n")
+endfunction
+function! g:ref_source_webdict_sites.wiki.filter(output)
+  return join(split(a:output, "\n")[17 :], "\n")
+endfunction
+
+nnoremap <Leader>e :<C-u>Ref webdict ej<Space>
