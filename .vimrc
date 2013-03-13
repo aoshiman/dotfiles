@@ -204,3 +204,6 @@ function! g:ref_source_webdict_sites.wiki.filter(output)
 endfunction
 
 nnoremap <Leader>e :<C-u>Ref webdict ej<Space>
+
+""" Config for Jedi.vim
+let g:jedi#pydoc = "<leader>d"
