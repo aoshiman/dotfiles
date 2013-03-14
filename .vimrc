@@ -28,6 +28,9 @@ Bundle 'banyan/recognize_charcode.vim'
 """ テンプレート
 Bundle 'mattn/sonictemplate-vim'
 
+""" 辞書
+Bundle 'koron/dicwin-vim'
+
 """ 開発支援
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'jmcantrell/vim-virtualenv'
