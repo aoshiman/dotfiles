@@ -89,22 +89,7 @@ case ${UID} in
 *)
     #http://qiita.com/c200680c26e509a4f41c を参考にしてみた
     #http://0xcc.net/blog/archives/000032.html 深いディレクトリのパスを短くする
-    #http://memo.officebrook.net/20090226.html ノーマルモードとインサートモードについて
-    function zle-line-init zle-keymap-select {
-    case $KEYMAP in
-        vicmd)
-            PROMPT="%m %{${fg[red]}%}NOR%{${reset_color}%}%{${fg[yellow]}%}%(5~,%-2~/.../%2~,%~)%{${reset_color}%}%{$fg[green]%}(*'-') <%{${reset_color}%}"
-        ;;
-        main|viins)
-            PROMPT="%m %{${fg[blue]}%}INS%{${reset_color}%}%{${fg[yellow]}%}%(5~,%-2~/.../%2~,%~)%{${reset_color}%}%{$fg[green]%}(*'-') <%{${reset_color}%}"
-        ;;
-    esac
-    zle reset-prompt
-    }
-
-    zle -N zle-line-init
-    zle -N zle-keymap-select
-
+    PROMPT="%m %{${fg[yellow]}%}%(5~,%-2~/.../%2~,%~)%{${reset_color}%}%{$fg[green]%}(*'-') <%{${reset_color}%}"
     PROMPT2='[%n]> '
     SPROMPT="%{$fg[red]%}%{$suggest%}(*'~'%)? < もしかして %B%r%b %{$fg[red]%}かな? [そう!(y), 違う!(n),a,e]:${reset_color}"
     RPROMPT='$(prompt-git-current-branch)'
