@@ -35,42 +35,54 @@ fpath=(${HOME}/.zsh/functions/Completion ${fpath})
 autoload -Uz colors
 colors
 
-autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
+# vcs_info
+autoload vcs_info
+# gitのみ有効にする
+zstyle ":vcs_info:*" enable git
+# commitしていない変更をチェックする
+zstyle ":vcs_info:git:*" check-for-changes true
+# gitリポジトリに対して、変更情報とリポジトリ情報を表示する
+zstyle ":vcs_info:git:*" formats "%f%F{green}%c%u%f %f%F{green}%b%f"
+# gitリポジトリに対して、コンフリクトなどの情報を表示する
+zstyle ":vcs_info:git:*" actionformats "%f%F{green}%c%u<%a>%f %f%F{green}%b%f"
+# addしていない変更があることを示す文字列
+zstyle ":vcs_info:git:*" unstagedstr "%f%F{red}(add)%f"
+# commitしていないstageがあることを示す文字列
+zstyle ":vcs_info:git:*" stagedstr "%f%F{red}(commit)%f"
+
+# git：まだpushしていないcommitあるかチェックする
+my_git_info_push () {
+  if [ "$(git remote 2>/dev/null)" != "" ]; then
+    local head="$(git rev-parse HEAD)"
+    local remote
+    for remote in $(git rev-parse --remotes) ; do
+      if [ "$head" = "$remote" ]; then return 0 ; fi
+    done
+    # pushしていないcommitがあることを示す文字列
+    echo "%f%F{red}(push)%f"
+  fi
+}
+
+# git：stashに退避したものがあるかチェックする
+my_git_info_stash () {
+  if [ "$(git stash list 2>/dev/null)" != "" ]; then
+    # stashがあることを示す文字列
+    echo "%f%F{blue}(stash)%f"
+  fi
+}
+
+# vcs_infoの出力に独自の出力を付加する
+my_vcs_info () {
+  vcs_info
+  echo $(my_git_info_stash)$(my_git_info_push)$vcs_info_msg_0_
+}
+
 setopt re_match_pcre
 setopt prompt_subst
 
 autoload -U compinit
 compinit -u
 
-# http://d.hatena.ne.jp/uasi/20091025/1256458798
-# When the reaction of a prompt is blunt
-# $touch .git/rprompt-nostatus
-function prompt-git-current-branch {
-    local name st color gitdir action
-    if [[ "$PWD" =~ '/\.git(/.*)?$' ]]; then
-        return
-    fi
-    name=`git rev-parse --abbrev-ref=loose HEAD 2> /dev/null`
-    if [[ -z $name ]]; then
-        return
-    fi
-
-    gitdir=`git rev-parse --git-dir 2> /dev/null`
-    action=`VCS_INFO_git_getaction "$gitdir"` && action="($action)"
-
-    st=`git status 2> /dev/null`
-    if [[ "$st" =~ "(?m)^nothing to" ]]; then
-        color=%F{green}
-    elif [[ "$st" =~ "(?m)^nothing added" ]]; then
-        color=%F{yellow}
-    elif [[ "$st" =~ "(?m)^# Untracked" ]]; then
-        color=%B%F{red}
-    else
-        color=%F{red}
-    fi
-
-    echo "$color$name$action%f%b "
-}
 
 # プロンプト
 case ${UID} in
@@ -82,18 +94,18 @@ case ${UID} in
 *)
     #http://qiita.com/c200680c26e509a4f41c を参考にしてみた
     #http://0xcc.net/blog/archives/000032.html 深いディレクトリのパスを短くする
-    PROMPT="%m %{${fg[yellow]}%}%(5~,%-2~/.../%2~,%~)%{${reset_color}%}%{$fg[green]%}(*'-') <%{${reset_color}%}"
+    PROMPT="%m %{${fg[yellow]}%}%(5~,%-2~/.../%2~,%~)%{${reset_color}%}%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(*'-') <!(*;-;%)? <)%{${reset_color}%}"
     PROMPT2='[%n]> '
     SPROMPT="%{$fg[red]%}%{$suggest%}(*'~'%)? < もしかして %B%r%b %{$fg[red]%}かな? [そう!(y), 違う!(n),a,e]:${reset_color}"
-    RPROMPT='$(prompt-git-current-branch)'
+    RPROMPT='$(my_vcs_info)'
 
     function zle-line-init zle-keymap-select {
     case $KEYMAP in
         vicmd)
-            RPROMPT='%{$fg[magenta]%}--NORNAL--%{${reset_color}%} $(prompt-git-current-branch)'
+            RPROMPT='%{$fg[magenta]%}--NORNAL--%{${reset_color}%} $(my_vcs_info)'
             ;;
         main|viins)
-            RPROMPT='%{$fg[cyan]%}--INSERT--%{${reset_color}%} $(prompt-git-current-branch)'
+            RPROMPT='%{$fg[cyan]%}--INSERT--%{${reset_color}%} $(my_vcs_info)'
             ;;
     esac
     zle reset-prompt
@@ -164,7 +176,7 @@ setopt auto_param_keys
 ###{{{ キーバインド
 
 bindkey -v
-zle-line-init() { zle -K vicmd; } ; zle -N zle-line-init
+#zle-line-init() { zle -K vicmd; } ; zle -N zle-line-init
 
 # bindkey -v でもコマンドラインスタック使う
 # http://qiita.com/items/1f2c7793944b1f6cc346
