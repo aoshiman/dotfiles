@@ -164,6 +164,7 @@ setopt auto_param_keys
 ###{{{ キーバインド
 
 bindkey -v
+zle-line-init() { zle -K vicmd; } ; zle -N zle-line-init
 
 # bindkey -v でもコマンドラインスタック使う
 # http://qiita.com/items/1f2c7793944b1f6cc346
