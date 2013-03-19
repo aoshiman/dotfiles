@@ -31,109 +31,6 @@ fpath=(${HOME}/.zsh/functions/Completion ${fpath})
 ###}}}
 
 
-###{{{ 外観に関する設定
-autoload -Uz colors
-colors
-
-# vcs_info
-autoload vcs_info
-# gitのみ有効にする
-zstyle ":vcs_info:*" enable git
-# commitしていない変更をチェックする
-zstyle ":vcs_info:git:*" check-for-changes true
-# gitリポジトリに対して、変更情報とリポジトリ情報を表示する
-zstyle ":vcs_info:git:*" formats "%f%F{green}%c%u%f %f%F{green}%b%f"
-# gitリポジトリに対して、コンフリクトなどの情報を表示する
-zstyle ":vcs_info:git:*" actionformats "%f%F{green}%c%u<%a>%f %f%F{green}%b%f"
-# addしていない変更があることを示す文字列
-zstyle ":vcs_info:git:*" unstagedstr "%f%F{red}(add)%f"
-# commitしていないstageがあることを示す文字列
-zstyle ":vcs_info:git:*" stagedstr "%f%F{red}(commit)%f"
-
-# git：まだpushしていないcommitあるかチェックする
-my_git_info_push () {
-  if [ "$(git remote 2>/dev/null)" != "" ]; then
-    local head="$(git rev-parse HEAD)"
-    local remote
-    for remote in $(git rev-parse --remotes) ; do
-      if [ "$head" = "$remote" ]; then return 0 ; fi
-    done
-    # pushしていないcommitがあることを示す文字列
-    echo "%f%F{red}(push)%f"
-  fi
-}
-
-# git：stashに退避したものがあるかチェックする
-my_git_info_stash () {
-  if [ "$(git stash list 2>/dev/null)" != "" ]; then
-    # stashがあることを示す文字列
-    echo "%f%F{blue}(stash)%f"
-  fi
-}
-
-# vcs_infoの出力に独自の出力を付加する
-my_vcs_info () {
-  vcs_info
-  echo $(my_git_info_stash)$(my_git_info_push)$vcs_info_msg_0_
-}
-
-setopt re_match_pcre
-setopt prompt_subst
-
-autoload -U compinit
-compinit -u
-
-
-# プロンプト
-case ${UID} in
-0)
-    PROMPT="%{${fg[cyan]}%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') %B%{${fg[red]}%}%/#%{${reset_color}%}%b "
-    PROMPT2="%B%{${fg[red]}%}%_#%{${reset_color}%}%b "
-    SPROMPT="%B%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
-    ;;
-*)
-    #http://qiita.com/c200680c26e509a4f41c を参考にしてみた
-    #http://0xcc.net/blog/archives/000032.html 深いディレクトリのパスを短くする
-    PROMPT="%m %{${fg[yellow]}%}%(5~,%-2~/.../%2~,%~)%{${reset_color}%}%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(*'-') <!(*;-;%)? <)%{${reset_color}%}"
-    PROMPT2='[%n]> '
-    SPROMPT="%{$fg[red]%}%{$suggest%}(*'~'%)? < もしかして %B%r%b %{$fg[red]%}かな? [そう!(y), 違う!(n),a,e]:${reset_color}"
-    RPROMPT='$(my_vcs_info)'
-
-    function zle-line-init zle-keymap-select {
-    case $KEYMAP in
-        vicmd)
-            RPROMPT='%{$fg[magenta]%}--NORNAL--%{${reset_color}%} $(my_vcs_info)'
-            ;;
-        main|viins)
-            RPROMPT='%{$fg[cyan]%}--INSERT--%{${reset_color}%} $(my_vcs_info)'
-            ;;
-    esac
-    zle reset-prompt
-    }
-    zle -N zle-line-init
-    zle -N zle-keymap-select
-
-;;
-esac
-
-# コマンドを実行するときに右プロンプトを消す。
-setopt transient_rprompt
-
-# コマンドラインでも # 以降をコメントと見なす
-setopt interactive_comments
-
-# set screen terminal title
-# Thanks https://github.com/afukuhara/dot.files/blob/master/.zshrc
-preexec() {
-    [ -n "${STY}" ] && echo -en "\ek${1%% 2%% *}\e\\"
-}
-precmd() {
-    [ -n "${STY}" ] && echo -en "\ek$(basename $(pwd))\e\\"
-}
-
-###}}}
-
-
 ###{{{ 補完など
 # auto change directory
 #
@@ -323,5 +220,7 @@ esac
 [ -f ${HOME}/.zshrc.screen_autoload ] && source ${HOME}/.zshrc.screen_autoload
 [ -f ${HOME}/.zshrc.python ] && source ${HOME}/.zshrc.python
 [ -f ${HOME}/.zshrc.osx ] && source ${HOME}/.zshrc.osx
+[ -f ${HOME}/.zshrc.prompt ] && source ${HOME}/.zshrc.prompt
+[ -f ${HOME}/.zshrc.prompt_light ] && source ${HOME}/.zshrc.prompt_light
 
 ###}}}
