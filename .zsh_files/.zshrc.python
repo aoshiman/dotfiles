@@ -1,9 +1,12 @@
-#Python VirtualenvWrapper
+# Python VirtualenvWrapper
 export WORKON_HOME=$HOME/.virtualenvs
 . /usr/local/bin/virtualenvwrapper.sh
 
-#local cache with pip
+# local cache with pip
 export PIP_DOWNLOAD_CACHE=$HOME/.pip_download_cache
 
-#set pythonstartup
-#export PYTHONSTARTUP=~/.pythonstartup #不要？
+# set pythonstartup
+#export PYTHONSTARTUP=~/.pythonstartup
+
+# pip upgrade all packages
+alias pip_upgrade_all="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U"

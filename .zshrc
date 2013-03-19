@@ -103,6 +103,10 @@ bindkey "\\ep" history-beginning-search-backward-end
 bindkey "\\en" history-beginning-search-forward-end
 bindkey "^r" history-incremental-search-backward
 
+# ctrl-w, ctrl-bキーで単語移動
+# https://github.com/tokuda109/dotfiles/blob/master/zshrc
+bindkey "^W" forward-word
+bindkey "^B" backward-word
 
 ###}}}
 
@@ -152,7 +156,7 @@ alias su="su -l"
 
 
 ###{{{ Function
-
+# ＾でディレクトリをあがる
 function cdup() {
 echo
 cd ..
@@ -161,6 +165,8 @@ zle reset-prompt
 zle -N cdup
 bindkey '\^' cdup
 
+
+# Function for VirtualBox
 function startvm () {
     VBoxmanage startvm "$1" -type headless
 }
@@ -176,6 +182,17 @@ function listvm () {
 function listallvm () {
     VBoxmanage list vms
 }
+
+
+# http://qiita.com/items/160a13a95e9627a55750
+# Check 256 Color
+function 256colortest() {
+    local code
+    for code in {0..255}; do
+        echo -e "\e[38;05;${code}m $code: Test"
+    done
+}
+
 
 ##}}}
 
@@ -216,10 +233,16 @@ esac
 
 
 ###{{{ load user .zshrc configuration file
-
+# screenのオートデタッチ＆アタッチ
 [ -f ${HOME}/.zshrc.screen_autoload ] && source ${HOME}/.zshrc.screen_autoload
+
+# Virtualenv等の設定
 [ -f ${HOME}/.zshrc.python ] && source ${HOME}/.zshrc.python
+
+# MacVimのPath等
 [ -f ${HOME}/.zshrc.osx ] && source ${HOME}/.zshrc.osx
+
+# Promptの設定、もっさりしていたらlightを使用（stash等は表示されない）
 [ -f ${HOME}/.zshrc.prompt ] && source ${HOME}/.zshrc.prompt
 [ -f ${HOME}/.zshrc.prompt_light ] && source ${HOME}/.zshrc.prompt_light
 
