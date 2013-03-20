@@ -157,13 +157,13 @@ alias su="su -l"
 
 ###{{{ Function
 # ＾でディレクトリをあがる
-function cdup() {
-echo
-cd ..
-zle reset-prompt
-}
-zle -N cdup
-bindkey '\^' cdup
+# function cdup() {
+# echo
+# cd ..
+# zle reset-prompt
+# }
+# zle -N cdup
+# bindkey '^\^' cdup
 
 
 # Function for VirtualBox
