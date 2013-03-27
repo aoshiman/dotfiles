@@ -27,6 +27,7 @@ Bundle 'banyan/recognize_charcode.vim'
 
 """ テンプレート
 Bundle 'mattn/sonictemplate-vim'
+Bundle 'Shougo/neosnippet'
 
 """ 辞書
 Bundle 'koron/dicwin-vim'
