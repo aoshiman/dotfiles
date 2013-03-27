@@ -147,6 +147,10 @@ autocmd BufWritePre * :%s/\s\+$//ge
 """ 保存時にtabをスペースに変換する
 autocmd BufWritePre * :%s/\t/  /ge
 
+" カレントディレクトリ設定(自動的に開いたファイルのディレクトリに移動)
+" if exists('+autochdir')
+    " set autochdir
+" endif
 
 """ Config for Plugin
 """ NERDTree
@@ -211,3 +215,23 @@ nnoremap <Leader>e :<C-u>Ref webdict ej<Space>
 
 """ Config for Jedi.vim
 let g:jedi#pydoc = "<leader>d"
+
+""" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
+
+" Plugin key-mappings.
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+    set conceallevel=2 concealcursor=i
+endif
+
+" スニペットファイルの配置場所
+let g:NeoComplCache_SnippetsDir = '~/.vim/snippets'
