@@ -127,7 +127,7 @@ set ruler           " ルーラを表示
 set showmatch       " 括弧入力で対応する括弧を一瞬強調
 
 """ template
-autocmd BufNewFile *.py 0r ~/.vim/template/python.txt
+"autocmd BufNewFile *.py 0r ~/.vim/template/python.txt
 
 """ Function
 """ create directory automatically 存在しないディレクトリ作成
