@@ -28,6 +28,7 @@ Bundle 'banyan/recognize_charcode.vim'
 """ テンプレート
 Bundle 'mattn/sonictemplate-vim'
 Bundle 'Shougo/neosnippet'
+Bundle 'honza/snipmate-snippets'
 
 """ 辞書
 Bundle 'koron/dicwin-vim'
@@ -216,7 +217,8 @@ nnoremap <Leader>e :<C-u>Ref webdict ej<Space>
 """ Config for Jedi.vim
 let g:jedi#pydoc = "<leader>d"
 
-""" <TAB>: completion.
+""" <TAB>: completion
+let g:neocomplcache_enable_at_startup = 1
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
@@ -234,4 +236,4 @@ if has('conceal')
 endif
 
 " スニペットファイルの配置場所
-let g:NeoComplCache_SnippetsDir = '~/.vim/snippets'
+let g:NeoComplCache_SnippetsDir = '~/.vim/snippets, ~/.vim/bundle/snipmate-snippets/snippets'
