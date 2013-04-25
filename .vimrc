@@ -44,6 +44,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'Shougo/vimproc'
 Bundle 'thinca/vim-quickrun'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'sontek/rope-vim'
 
 """ ユーティリティ
 Bundle 'sudo.vim'
