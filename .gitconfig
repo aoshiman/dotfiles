@@ -37,3 +37,5 @@
     ss = stash save
     sd = stash drop
 
+[github]
+  user = aoshiman

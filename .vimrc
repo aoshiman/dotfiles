@@ -45,6 +45,8 @@ Bundle 'Shougo/vimproc'
 Bundle 'thinca/vim-quickrun'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'sontek/rope-vim'
+Bundle 'mattn/gist-vim'
+Bundle 'mattn/webapi-vim'
 
 """ ユーティリティ
 Bundle 'sudo.vim'
@@ -239,3 +241,11 @@ endif
 
 " スニペットファイルの配置場所
 let g:NeoComplCache_SnippetsDir = '~/.vim/snippets, ~/.vim/bundle/snipmate-snippets/snippets'
+
+" for gist-vim
+if has("unix")
+    let g:gist_clip_command = 'xclip -selection clipboard'
+elseif has("mac")
+    let g:gist_clip_command = 'pbcopy'
+endif
+let g:gist_update_on_write = 2
