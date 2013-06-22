@@ -44,7 +44,6 @@ Bundle 'tpope/vim-surround'
 Bundle 'Shougo/vimproc'
 Bundle 'thinca/vim-quickrun'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'sontek/rope-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'mattn/webapi-vim'
 
