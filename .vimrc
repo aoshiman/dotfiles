@@ -219,6 +219,8 @@ nnoremap <Leader>e :<C-u>Ref webdict ej<Space>
 
 """ Config for Jedi.vim
 let g:jedi#pydoc = "<leader>j"
+" let g:jedi#show_function_definition = "0"
+let g:jedi#popup_on_dot = 0
 
 """ <TAB>: completion
 let g:neocomplcache_enable_at_startup = 1
