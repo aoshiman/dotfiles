@@ -250,3 +250,7 @@ elseif has("mac")
     let g:gist_clip_command = 'pbcopy'
 endif
 let g:gist_update_on_write = 2
+
+" vimshell
+let g:vimshell_prompt_expr = 'getcwd()." > "'
+let g:vimshell_prompt_pattern = '^\f\+ > '
