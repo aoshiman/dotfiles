@@ -11,3 +11,9 @@ export PIP_DOWNLOAD_CACHE=$HOME/.pip_download_cache
 
 # pip upgrade all packages
 alias pip_upgrade_all="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U"
+
+# delete pyc file in current directry reflexive
+alias del_pyc="find . -name '*.pyc' -exec rm {} \;"
+
+# do not make pyc file
+export PYTHONDONTWRITEBYTECODE=1
