@@ -159,6 +159,9 @@ alias su="su -l"
 alias -g ....="../.."
 alias -g ......="../../.."
 
+#git
+alias gti="git"
+
 ###}}}
 
 
