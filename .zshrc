@@ -27,10 +27,12 @@ esac
 
 ###{{{ パスの設定
 #export PATH=/opt/local/bin:/opt/local/sbin/:$PATH
+# $PATHは現在のパス一覧を表す。先頭に追加pathしたければ$PATHより前に記述
 export PATH=/usr/local/bin:$PATH
 #zsh function
 fpath=(${HOME}/.zsh/functions/Completion ${fpath})
-
+# パスの重複除去 path追加設定よりも後ろに記述すること
+typeset -U path cdpath fpath manpath
 ###}}}
 
 
