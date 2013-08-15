@@ -47,6 +47,13 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'mattn/gist-vim'
 Bundle 'mattn/webapi-vim'
 
+"" http://layzie.hatenablog.com/entry/20130122/1358811539
+Bundle 'jiangmiao/simple-javascript-indenter'
+Bundle 'itspriddle/vim-jquery'
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'teramako/jscomplete-vim'
+Bundle 'scrooloose/syntastic'
+
 """ ユーティリティ
 Bundle 'sudo.vim'
 Bundle 'Shougo/vimshell'
