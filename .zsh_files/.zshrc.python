@@ -19,6 +19,8 @@ alias del_pyc="find . -name '*.pyc' -exec rm {} \;"
 # export PYTHONDONTWRITEBYTECODE=1
 
 # pip zsh completion start
+# http://www.pip-installer.org/en/latest/configuration.html#command-completion
+# pip completion --zsh >> ~/.zshrc
 function _pip_completion {
   local words cword
   read -Ac words
