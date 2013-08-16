@@ -54,6 +54,8 @@ Bundle 'jelera/vim-javascript-syntax'
 Bundle 'teramako/jscomplete-vim'
 Bundle 'scrooloose/syntastic'
 
+Bundle 'python_fold'
+
 """ ユーティリティ
 Bundle 'sudo.vim'
 Bundle 'Shougo/vimshell'
