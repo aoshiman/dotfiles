@@ -242,6 +242,14 @@ smap <C-k> <Plug>(neosnippet_expand_or_jump)
 imap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
+" Jscomplete as neno plugin
+autocmd FileType javascript,coffee setlocal omnifunc=javascriptcomplete#CompleteJS
+let g:neocomplcache_source_rank = {
+  \ 'jscomplete' : 500,
+  \ }
+" dom も含める
+let g:jscomplete_use = ['dom']
+
 " For snippet_complete marker.
 if has('conceal')
     set conceallevel=2 concealcursor=i
