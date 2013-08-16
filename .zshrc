@@ -254,6 +254,9 @@ esac
 # MacVimのPath等
 [ -f ${HOME}/.zshrc.osx ] && source ${HOME}/.zshrc.osx
 
+# Node.jsの設定
+[ -f ${HOME}/.zshrc.node ] && source ${HOME}/.zshrc.node
+
 # Promptの設定、もっさりしていたらlightを使用（stash等は表示されない）
 [ -f ${HOME}/.zshrc.prompt ] && source ${HOME}/.zshrc.prompt
 [ -f ${HOME}/.zshrc.prompt_light ] && source ${HOME}/.zshrc.prompt_light
