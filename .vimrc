@@ -139,6 +139,9 @@ set ruler           " ルーラを表示
 """ set wildmode=list:longest,full " 入力補完の設定（リスト表示で最長一致、その後選択）
 set showmatch       " 括弧入力で対応する括弧を一瞬強調
 
+""" クリップボード
+set clipboard=unnamed,autoselect
+
 """ template
 "autocmd BufNewFile *.py 0r ~/.vim/template/python.txt
 
