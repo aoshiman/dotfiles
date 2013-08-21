@@ -140,7 +140,11 @@ set ruler           " ルーラを表示
 set showmatch       " 括弧入力で対応する括弧を一瞬強調
 
 """ クリップボード
+" vim --version | grep clipboardで+clipboardの場合
 set clipboard=unnamed,autoselect
+
+" -clipboardの場合 xselをインストールして下記キーマップ設定
+vmap <C-c> :w !xsel -ib<CR><CR>
 
 """ template
 "autocmd BufNewFile *.py 0r ~/.vim/template/python.txt
