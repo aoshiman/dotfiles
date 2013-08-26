@@ -234,7 +234,7 @@ endfunction
 nnoremap <Leader>e :<C-u>Ref webdict ej<Space>
 
 """ Config for Jedi.vim
-let g:jedi#pydoc = "<leader>j"
+let g:jedi#documentation_command = "<leader>j"
 " let g:jedi#show_function_definition = "0"
 let g:jedi#popup_on_dot = 0
 
