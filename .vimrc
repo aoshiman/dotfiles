@@ -127,6 +127,8 @@ set cursorcolumn
 set laststatus=2
 set notitle "VIMを使ってくれてありがとうのメッセージを表示させない
 
+nnoremap <space> za " スペースで折りたたみ解除
+
 """ バックアップ
 set nobackup          " ファイル上書きでバックアップファイルを作成
 """ set backupdir=/tmp  " バックアップファイルの保存場所
