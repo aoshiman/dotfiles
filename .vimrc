@@ -84,6 +84,10 @@ set expandtab       " tab を空白文字に置き換え
 set shiftwidth=4    " tab 文字の入力幅（自動インデントの時）
 set tabstop=4       " tab 文字の表示幅（既存ファイル展開時のタブ表示幅）
 set softtabstop=4   " キーボードでtab 文字を入力した時の入力幅
+
+set list
+set listchars=tab:>- " tabがある場合表示させる
+
 """ 削除
 set backspace=indent,eol,start  " BS で indent,改行,挿入開始前を削除
 set smarttab        " BS でインデント幅を削除
