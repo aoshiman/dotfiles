@@ -178,6 +178,20 @@ autocmd BufWritePre * :%s/\t/  /ge
     " set autochdir
 " endif
 
+" 全角スペースを　ハイライト表示させる
+function! ZenkakuSpace()
+    highlight ZenkakuSpace cterm=reverse ctermfg=DarkMagenta gui=reverse guifg=DarkMagenta
+endfunction
+
+if has('syntax')
+    augroup ZenkakuSpace
+        autocmd!
+        autocmd ColorScheme       * call ZenkakuSpace()
+        autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
+    augroup END
+    call ZenkakuSpace()
+endif
+
 """ Config for Plugin
 """ NERDTree
 " let file_name = expand("%")
