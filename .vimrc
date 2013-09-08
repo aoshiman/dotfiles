@@ -56,6 +56,8 @@ Bundle 'scrooloose/syntastic'
 Bundle 'python_fold'
 
 Bundle 'lilydjwg/colorizer'
+Bundle 'pasela/unite-webcolorname'
+
 
 """ ユーティリティ
 Bundle 'sudo.vim'
