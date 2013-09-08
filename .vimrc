@@ -53,8 +53,9 @@ Bundle 'itspriddle/vim-jquery'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'teramako/jscomplete-vim'
 Bundle 'scrooloose/syntastic'
-
 Bundle 'python_fold'
+
+Bundle 'lilydjwg/colorizer'
 
 """ ユーティリティ
 Bundle 'sudo.vim'
