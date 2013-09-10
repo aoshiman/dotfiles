@@ -17,7 +17,7 @@
     ft = fetch
 
     #log
-    ol = log --graph --date=short --pretty='%C(yellow)%h%Creset %C(cyan bold)%d%Creset %s %Cgreen[%cd]%Creset' --decorate
+    ol = log --graph --date=iso --pretty='%C(yellow)%h%Creset %C(cyan bold)%d%Creset %s %Cgreen[%cd]%Creset' --decorate
 
     #commit
     ad = add
