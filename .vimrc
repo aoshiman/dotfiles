@@ -274,7 +274,7 @@ smap <C-k> <Plug>(neosnippet_expand_or_jump)
 imap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
-" Jscomplete as neno plugin
+" Jscomplete as neco plugin
 autocmd FileType javascript,coffee setlocal omnifunc=javascriptcomplete#CompleteJS
 let g:neocomplcache_source_rank = {
   \ 'jscomplete' : 500,
