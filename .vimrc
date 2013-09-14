@@ -229,7 +229,7 @@ nmap <Leader>c <Plug>NERDCommenterToggle
 vmap <Leader>c <Plug>NERDCommenterToggle
 
 """ Beffet.vim
-nnoremap <silent><Leader>l :Bufferlist<CR>
+nnoremap <silent> ,, :Bufferlist<CR>
 
 """ Config for Vim-ref
 "" Config for Ref webdict
