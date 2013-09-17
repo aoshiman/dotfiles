@@ -99,6 +99,10 @@ set smarttab        " BS でインデント幅を削除
 " USKeyboard対策
 nnoremap ; :
 nnoremap : ;
+
+" esc
+imap <c-j> <esc>
+
 " .vimrcを開く$MYVIMRCは~/.vimrcに関する環境変数
 nnoremap <Leader>v  :<C-u>edit $MYVIMRC<CR>
 " source ~/.vimrc を実行する。
