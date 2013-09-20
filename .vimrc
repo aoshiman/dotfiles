@@ -63,6 +63,7 @@ Bundle 'pasela/unite-webcolorname'
 Bundle 'sudo.vim'
 Bundle 'Shougo/vimshell'
 Bundle 'Shougo/neocomplcache'
+Bundle 'rhysd/clever-f.vim'
 
 filetype plugin indent on
 
