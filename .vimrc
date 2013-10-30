@@ -32,7 +32,7 @@ Bundle 'honza/vim-snippets'
 Bundle 'mattn/emmet-vim'
 
 """ 辞書
-Bundle 'koron/dicwin-vim'
+" Bundle 'koron/dicwin-vim'
 
 """ 開発支援
 Bundle 'nathanaelkane/vim-indent-guides'
@@ -51,7 +51,6 @@ Bundle 'mattn/webapi-vim'
 Bundle 'jiangmiao/simple-javascript-indenter'
 Bundle 'itspriddle/vim-jquery'
 Bundle 'jelera/vim-javascript-syntax'
-Bundle 'teramako/jscomplete-vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'python_fold'
 
