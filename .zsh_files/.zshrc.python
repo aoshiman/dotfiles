@@ -15,6 +15,9 @@ alias pip_upgrade_all="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xa
 # mktmpenv -p `which python3.3`
 alias mktmpenv3="mktmpenv -p `which python3.3`"
 
+# mkvirtualenv -p `which python3.3`
+alias mkvirtualenv3="mkvirtualenv -p `which python3.3`"
+
 # delete pyc file in current directry reflexive
 alias del_pyc="find . -name '*.pyc' -exec rm {} \;"
 
