@@ -259,6 +259,7 @@ esac
 
 # Promptの設定、もっさりしていたらlightを使用（stash等は表示されない）
 [ -f ${HOME}/.zshrc.prompt ] && source ${HOME}/.zshrc.prompt
+[ -f ${HOME}/.zshrc.prompt.remote ] && source ${HOME}/.zshrc.prompt.remote
 [ -f ${HOME}/.zshrc.prompt_light ] && source ${HOME}/.zshrc.prompt_light
 
 ###}}}
