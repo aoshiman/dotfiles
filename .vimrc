@@ -56,6 +56,7 @@ Bundle 'python_fold'
 
 Bundle 'lilydjwg/colorizer'
 Bundle 'pasela/unite-webcolorname'
+Bundle 'vim-scripts/nginx.vim'
 
 
 """ ユーティリティ
@@ -316,3 +317,6 @@ let g:gist_update_on_write = 2
 " vimshell
 let g:vimshell_prompt_expr = 'getcwd()." > "'
 let g:vimshell_prompt_pattern = '^\f\+ > '
+
+" nginx.vim
+au BufRead,BufNewFile /etc/nginx/* set ft=nginx
