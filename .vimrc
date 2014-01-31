@@ -28,6 +28,7 @@ Bundle 'banyan/recognize_charcode.vim'
 """ テンプレート
 Bundle 'mattn/sonictemplate-vim'
 Bundle 'Shougo/neosnippet'
+Bundle 'Shougo/neosnippet-snippets'
 Bundle 'honza/vim-snippets'
 Bundle 'mattn/emmet-vim'
 
@@ -304,7 +305,8 @@ if has('conceal')
 endif
 
 " スニペットファイルの配置場所
-let g:NeoComplCache_SnippetsDir = '~/.vim/snippets, ~/.vim/bundle/snipmate-snippets/snippets'
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
 " for gist-vim
 if has("unix")
