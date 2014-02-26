@@ -4,3 +4,7 @@ alias cot='open $1 -a /Applications/CotEditor.app'
 #for macvim
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim='env_LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+
+#for vim-py3
+alias viPY3='/usr/local/bin/vim'
+alias vimPY3='/usr/local/bin/vim'
