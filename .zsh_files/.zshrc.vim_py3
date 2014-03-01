@@ -1,0 +1,3 @@
+#for vim-py3
+alias viPY3='env LANG=ja_JP.UTF-8 /usr/local/bin/vim "$@"'
+alias vimPY3='env LANG=ja_JP.UTF-8 /usr/local/bin/vim "$@"'
