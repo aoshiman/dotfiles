@@ -258,6 +258,9 @@ esac
 # MacVimのPath等
 [ -f ${HOME}/.zshrc.osx ] && source ${HOME}/.zshrc.osx
 
+# vimのPath等
+[ -f ${HOME}/.zshrc.vim_py3 ] && source ${HOME}/.zshrc.vim_py3
+
 # Node.jsの設定
 [ -f ${HOME}/.zshrc.node ] && source ${HOME}/.zshrc.node
 
