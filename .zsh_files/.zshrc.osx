@@ -1,6 +1,2 @@
 #coteditor
 alias cot='open $1 -a /applications/coteditor.app'
-
-#for macvim
-alias vi='env lang=ja_jp.utf-8 /applications/macvim.app/contents/macos/vim "$@"'
-alias vim='env_lang=ja_jp.utf-8 /applications/macvim.app/contents/macos/vim "$@"'
