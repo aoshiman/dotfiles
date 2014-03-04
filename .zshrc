@@ -247,26 +247,11 @@ esac
 
 ###}}}
 
-
 ###{{{ load user .zshrc configuration file
-# screenのオートデタッチ＆アタッチ
-[ -f ${HOME}/.zshrc.screen_autoload ] && source ${HOME}/.zshrc.screen_autoload
-
-# Virtualenv等の設定
-[ -f ${HOME}/.zshrc.python ] && source ${HOME}/.zshrc.python
-
-# MacVimのPath等
-[ -f ${HOME}/.zshrc.osx ] && source ${HOME}/.zshrc.osx
-
-# vimのPath等
-[ -f ${HOME}/.zshrc.vim_py3 ] && source ${HOME}/.zshrc.vim_py3
-
-# Node.jsの設定
-[ -f ${HOME}/.zshrc.node ] && source ${HOME}/.zshrc.node
-
-# Promptの設定、もっさりしていたらlightを使用（stash等は表示されない）
-[ -f ${HOME}/.zshrc.prompt ] && source ${HOME}/.zshrc.prompt
-[ -f ${HOME}/.zshrc.prompt.remote ] && source ${HOME}/.zshrc.prompt.remote
-[ -f ${HOME}/.zshrc.prompt_light ] && source ${HOME}/.zshrc.prompt_light
+if [ -d .zshrc.d ]; then
+    for file in `find .zshrc.d -mindepth 1`; do
+        source $file
+    done
+fi
 
 ###}}}
