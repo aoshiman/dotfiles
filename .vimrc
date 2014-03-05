@@ -58,6 +58,7 @@ Bundle 'python_fold'
 Bundle 'lilydjwg/colorizer'
 Bundle 'pasela/unite-webcolorname'
 Bundle 'vim-scripts/nginx.vim'
+Bundle 'gcmt/wildfire.vim'
 
 
 """ ユーティリティ
