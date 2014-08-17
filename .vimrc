@@ -33,7 +33,8 @@ Bundle 'honza/vim-snippets'
 Bundle 'mattn/emmet-vim'
 
 """ 辞書
-" Bundle 'koron/dicwin-vim'
+Bundle 'koron/dicwin-vim'
+Bundle 'mattn/excitetranslate-vim'
 
 """ 開発支援
 Bundle 'nathanaelkane/vim-indent-guides'
@@ -55,11 +56,12 @@ Bundle 'jelera/vim-javascript-syntax'
 Bundle 'scrooloose/syntastic'
 Bundle 'python_fold'
 
-Bundle 'lilydjwg/colorizer'
+" Bundle 'lilydjwg/colorizer'
+" colorizerを有効にしているとdicwin.vimのレスポンスが
+" 悪いので気を付ける
 Bundle 'pasela/unite-webcolorname'
 Bundle 'vim-scripts/nginx.vim'
 Bundle 'gcmt/wildfire.vim'
-
 
 """ ユーティリティ
 Bundle 'sudo.vim'
