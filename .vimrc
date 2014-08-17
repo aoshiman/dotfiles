@@ -15,7 +15,8 @@ Bundle 'thinca/vim-ref'
 Bundle 'altercation/vim-colors-solarized'
 
 """ ステータスライン
-Bundle 'Lokaltog/vim-powerline'
+" Bundle 'Lokaltog/vim-powerline'
+Bundle 'itchyny/lightline.vim'
 
 """ ファイラー・バッファ管理
 Bundle 'scrooloose/nerdtree'
@@ -325,3 +326,19 @@ let g:vimshell_prompt_pattern = '^\f\+ > '
 
 " nginx.vim
 au BufRead,BufNewFile /etc/nginx/* set ft=nginx
+
+let g:lightline = {
+            \ 'colorscheme': 'solarized',
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ],
+            \             [ 'readonly', 'filename', 'modified' ],
+            \             [ 'fugitive' ]
+            \            ],
+            \   'right': [ [ 'lineinfo' ],
+            \              [ 'percent' ],
+            \              [ 'filetype', 'fileencoding', 'fileformat' ] ]
+            \   },
+            \ 'component': {
+            \   'fugitive': '%{exists("*fugitive#statusline()")?fugitive#statusline():""}'
+            \   }
+            \ }
