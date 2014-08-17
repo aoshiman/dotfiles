@@ -327,6 +327,7 @@ let g:vimshell_prompt_pattern = '^\f\+ > '
 " nginx.vim
 au BufRead,BufNewFile /etc/nginx/* set ft=nginx
 
+" lightline.vim
 let g:lightline = {
             \ 'colorscheme': 'solarized',
             \ 'active': {
