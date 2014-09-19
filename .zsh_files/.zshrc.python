@@ -13,10 +13,16 @@ export PIP_DOWNLOAD_CACHE=$HOME/.pip_download_cache
 alias pip_upgrade_all="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U"
 
 # mktmpenv -p `which python3.3`
-alias mktmpenv3="mktmpenv -p `which python3.3`"
+alias mktmpenv33="mktmpenv -p `which python3.3`"
+
+# mktmpenv -p `which python3.4`
+alias mktmpenv34="mktmpenv -p `which python3.4`"
 
 # mkvirtualenv -p `which python3.3`
-alias mkvirtualenv3="mkvirtualenv -p `which python3.3`"
+alias mkvirtualenv33="mkvirtualenv -p `which python3.3`"
+
+# mkvirtualenv -p `which python3.4`
+alias mkvirtualenv34="mkvirtualenv -p `which python3.4`"
 
 # delete pyc file in current directry reflexive
 alias del_pyc="find . -name '*.pyc' -exec rm {} \;"
