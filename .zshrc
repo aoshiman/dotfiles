@@ -247,6 +247,12 @@ esac
 
 ###}}}
 
+
+###{{{ make gitignore
+function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
+###}}}
+
+
 ###{{{ load user .zshrc configuration file
 if [ -d .zshrc.d ]; then
     for file in `find .zshrc.d -mindepth 1`; do
