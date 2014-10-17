@@ -1,4 +1,12 @@
-set nocompatible
+if has('vim_starting')
+    set nocompatible               " Be iMproved
+    set runtimepath+=~/dotfiles/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#begin(expand('~/dotfiles/.vim/bundle/'))
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
+
 " function! IncludePath(path)
     " " define delimiter depends on platform
     " if has('win16') || has('win32') || has('win64')
@@ -15,77 +23,83 @@ set nocompatible
 " " これを行わないとpythonが正しく検索されない
 " call IncludePath(expand("~/.pyenv/shims"))
 
-filetype off
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-""" Vundle自身
-Bundle 'gmarik/vundle'
-
 """ ヘルプ
-Bundle 'vim-jp/vimdoc-ja'
-Bundle 'thinca/vim-ref'
+NeoBundle 'vim-jp/vimdoc-ja'
+NeoBundle 'thinca/vim-ref'
 
 """ カラースキーム
-Bundle 'altercation/vim-colors-solarized'
+NeoBundle 'altercation/vim-colors-solarized'
 
 """ ステータスライン
-" Bundle 'Lokaltog/vim-powerline'
-Bundle 'itchyny/lightline.vim'
+" NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'itchyny/lightline.vim'
 
 """ ファイラー・バッファ管理
-Bundle 'scrooloose/nerdtree'
-Bundle 'Shougo/unite.vim'
-Bundle 'sandeepcr529/Buffet.vim'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'sandeepcr529/Buffet.vim'
 
 """ 文字コード自動判定
-Bundle 'banyan/recognize_charcode.vim'
+NeoBundle 'banyan/recognize_charcode.vim'
 
 """ テンプレート
-Bundle 'mattn/sonictemplate-vim'
-Bundle 'Shougo/neosnippet'
-Bundle 'Shougo/neosnippet-snippets'
-Bundle 'honza/vim-snippets'
-Bundle 'mattn/emmet-vim'
+NeoBundle 'mattn/sonictemplate-vim'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'honza/vim-snippets'
+NeoBundle 'mattn/emmet-vim'
 
 """ 辞書
-Bundle 'koron/dicwin-vim'
-Bundle 'mattn/excitetranslate-vim'
+NeoBundle 'koron/dicwin-vim'
+NeoBundle 'mattn/excitetranslate-vim'
 
 """ 開発支援
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'jmcantrell/vim-virtualenv'
-Bundle 'davidhalter/jedi-vim'
-Bundle 'mitechie/pyflakes-pathogen'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
-Bundle 'Shougo/vimproc'
-Bundle 'thinca/vim-quickrun'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'mattn/gist-vim'
-Bundle 'mattn/webapi-vim'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+" NeoBundle 'jmcantrell/vim-virtualenv'
+" NeoBundle 'miyakogi/vim-virtualenv'
+NeoBundle 'aoshiman/vim-virtualenv'
+NeoBundle 'mitechie/pyflakes-pathogen'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'mattn/gist-vim'
+NeoBundle 'mattn/webapi-vim'
+NeoBundleLazy "davidhalter/jedi-vim", {
+            \ "autoload": {
+            \   "filetypes": ["python", "python3", "djangohtml"]
+            \ }}
+
+" pyenv 処理用に vim-pyenv を追加
+" Note: depends が指定されているため jedi-vim より後にロードされる
+NeoBundleLazy "lambdalisue/vim-pyenv", {
+            \ "depends": ['davidhalter/jedi-vim'],
+            \ "autoload": {
+            \   "filetypes": ["python", "python3", "djangohtml"]
+            \ }}
 
 "" http://layzie.hatenablog.com/entry/20130122/1358811539
-Bundle 'jiangmiao/simple-javascript-indenter'
-Bundle 'itspriddle/vim-jquery'
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'scrooloose/syntastic'
-Bundle 'python_fold'
+NeoBundle 'jiangmiao/simple-javascript-indenter'
+NeoBundle 'itspriddle/vim-jquery'
+NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'python_fold'
 
-" Bundle 'lilydjwg/colorizer'
+" NeoBundle 'lilydjwg/colorizer'
 " colorizerを有効にしているとdicwin.vimのレスポンスが
 " 悪いので気を付ける
-Bundle 'pasela/unite-webcolorname'
-Bundle 'vim-scripts/nginx.vim'
-Bundle 'gcmt/wildfire.vim'
+NeoBundle 'pasela/unite-webcolorname'
+NeoBundle 'vim-scripts/nginx.vim'
+NeoBundle 'gcmt/wildfire.vim'
 
 """ ユーティリティ
-Bundle 'sudo.vim'
-Bundle 'Shougo/vimshell'
-Bundle 'Shougo/neocomplcache'
-Bundle 'rhysd/clever-f.vim'
+NeoBundle 'sudo.vim'
+NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'rhysd/clever-f.vim'
 
+call neobundle#end()
 filetype plugin indent on
 
 """ シンタックスの色づけ有効
