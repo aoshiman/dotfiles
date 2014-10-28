@@ -353,6 +353,8 @@ let g:gist_update_on_write = 2
 " vimshell
 let g:vimshell_prompt_expr = 'getcwd()." > "'
 let g:vimshell_prompt_pattern = '^\f\+ > '
+nnoremap <Space>vs :VimShell<CR>
+nnoremap <Space>vp :VimShellPop<CR>
 
 " nginx.vim
 au BufRead,BufNewFile /etc/nginx/* set ft=nginx
