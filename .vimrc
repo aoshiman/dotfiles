@@ -375,3 +375,6 @@ let g:lightline = {
             \   'fugitive': '%{exists("*fugitive#statusline()")?fugitive#statusline():""}'
             \   }
             \ }
+
+" Neobundle
+nnoremap <silent><Space>bu :NeoBundleUpdate<cr>
