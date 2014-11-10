@@ -4,7 +4,7 @@
 
 ###{{{ 補完宣言
 autoload -Uz compinit
-compinit
+compinit -u
 
 ###}}}
 
