@@ -2,6 +2,12 @@
 #http://yuyunko.hatenablog.com/entry/20101112/1289551129
 #コピペしておきながら全部把握していない。。
 
+###{{{ 補完宣言
+autoload -Uz compinit
+compinit
+
+###}}}
+
 ###{{{ 環境設定
 export EDITOR='vim'
 #export TERM=dtterm #iTermで矢印が効かない時の対応らしいが使ってない

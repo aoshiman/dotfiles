@@ -6,8 +6,8 @@ autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 setopt re_match_pcre
 setopt prompt_subst
 
-autoload -U compinit
-compinit -u
+# autoload -U compinit
+# compinit -u
 
 # http://d.hatena.ne.jp/uasi/20091025/1256458798
 # When the reaction of a prompt is blunt

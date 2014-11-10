@@ -47,8 +47,8 @@ my_vcs_info () {
 setopt re_match_pcre
 setopt prompt_subst
 
-autoload -U compinit
-compinit -u
+# autoload -U compinit
+# compinit -u
 
 
 # プロンプト
