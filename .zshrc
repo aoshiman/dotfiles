@@ -153,7 +153,7 @@ freebsd*|darwin*)
     alias ls="ls -G -w"
     ;;
 linux*)
-    alias ls="ls --color"
+    alias ls="ls --color=auto"
     alias sudo="sudo "
     ;;
 esac
@@ -265,5 +265,52 @@ if [ -d .zshrc.d ]; then
         source $file
     done
 fi
+
+###}}}
+
+###{{{ config for cds and percol
+# cdr
+autoload -U is-at-least
+
+zstyle ':completion:*' menu select
+zstyle ':completion:*:cd:*' ignore-parents parent pwd
+zstyle ':completion:*:descriptions' format '%BCompleting%b %U%d%u'
+
+typeset -ga chpwd_functions
+
+if is-at-least 4.3.11; then
+  autoload -U chpwd_recent_dirs cdr
+  chpwd_functions+=chpwd_recent_dirs
+  zstyle ":chpwd:*" recent-dirs-max 500
+  zstyle ":chpwd:*" recent-dirs-default true
+  zstyle ":completion:*" recent-dirs-insert always
+fi
+
+# percol_select_history
+function exists { which $1 &> /dev/null }
+if exists percol; then
+    function percol_select_history() {
+        local tac
+        exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
+        BUFFER=$(history -n 1 | eval $tac | percol --query "$LBUFFER")
+        CURSOR=$#BUFFER         # move cursor
+        zle -R -c               # refresh
+}
+
+    zle -N percol_select_history
+    bindkey '^R' percol_select_history
+fi
+
+# percol-cdr
+function percol-cdr () {
+local selected_dir=$(cdr -l | awk '{ print $2 }' | percol --query "$LBUFFER")
+if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+fi
+zle clear-screen
+}
+zle -N percol-cdr
+bindkey '^xb' percol-cdr
 
 ###}}}
