@@ -301,14 +301,23 @@ if exists percol; then
     bindkey '^R' percol_select_history
 fi
 
-# percol-cdr
-function percol-cdr () {
-local selected_dir=$(cdr -l | awk '{ print $2 }' | percol --query "$LBUFFER")
-if [ -n "$selected_dir" ]; then
-    BUFFER="cd ${selected_dir}"
-    zle accept-line
-fi
-zle clear-screen
+
+### search a destination from cdr list
+function percol-get-destination-from-cdr() {
+    cdr -l | \
+        sed -e 's/^[[:digit:]]*[[:blank:]]*//' | \
+        percol --query "$LBUFFER"
+}
+
+### search a destination from cdr list and cd the destination
+function percol-cdr() {
+    local destination="$(percol-get-destination-from-cdr)"
+    if [ -n "$destination" ]; then
+        BUFFER="cd $destination"
+        zle accept-line
+    else
+        zle reset-prompt
+    fi
 }
 zle -N percol-cdr
 bindkey '^xb' percol-cdr
