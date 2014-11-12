@@ -123,6 +123,13 @@ bindkey "^r" history-incremental-search-backward
 bindkey "^W" forward-word
 bindkey "^B" backward-word
 
+
+bindkey "^?"    backward-delete-char
+bindkey "^H"    backward-delete-char
+bindkey "[3~" delete-char
+bindkey "[1~" beginning-of-line
+bindkey "[4~" end-of-line
+
 ###}}}
 
 
