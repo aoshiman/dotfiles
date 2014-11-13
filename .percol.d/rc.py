@@ -8,5 +8,5 @@ percol.import_keymap({
     "C-f" : lambda percol: percol.command.select_next_page(),
     "C-b" : lambda percol: percol.command.select_previous_page(),
     "C-m" : lambda percol: percol.finish(),
-    "q" : lambda percol: percol.cancel(),
+    "C-q" : lambda percol: percol.cancel(),
     })
