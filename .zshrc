@@ -181,6 +181,9 @@ alias -g ......="../../.."
 #git
 alias gti="git"
 
+#less
+alias less="less -R"
+
 ###}}}
 
 
