@@ -61,7 +61,14 @@ NeoBundle 'aoshiman/vim-virtualenv'
 NeoBundle 'mitechie/pyflakes-pathogen'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc', {
+  \ 'build' : {
+    \ 'windows' : 'make -f make_mingw32.mak',
+    \ 'cygwin' : 'make -f make_cygwin.mak',
+    \ 'mac' : 'make -f make_mac.mak',
+    \ 'unix' : 'make -f make_unix.mak',
+  \ },
+  \ }
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'mattn/gist-vim'
