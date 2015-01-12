@@ -91,7 +91,7 @@ NeoBundle 'jiangmiao/simple-javascript-indenter'
 NeoBundle 'itspriddle/vim-jquery'
 NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'python_fold'
+" NeoBundle 'python_fold'
 
 " NeoBundle 'lilydjwg/colorizer'
 " colorizerを有効にしているとdicwin.vimのレスポンスが
