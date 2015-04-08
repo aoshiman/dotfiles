@@ -50,7 +50,7 @@ NeoBundle 'honza/vim-snippets'
 NeoBundle 'mattn/emmet-vim'
 
 """ 辞書
-NeoBundle 'koron/dicwin-vim'
+" NeoBundle 'koron/dicwin-vim'
 NeoBundle 'mattn/excitetranslate-vim'
 
 """ 開発支援
