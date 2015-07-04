@@ -78,14 +78,6 @@ NeoBundleLazy "davidhalter/jedi-vim", {
             \   "filetypes": ["python", "python3", "djangohtml"]
             \ }}
 
-" pyenv 処理用に vim-pyenv を追加
-" Note: depends が指定されているため jedi-vim より後にロードされる
-NeoBundleLazy "lambdalisue/vim-pyenv", {
-            \ "depends": ['davidhalter/jedi-vim'],
-            \ "autoload": {
-            \   "filetypes": ["python", "python3", "djangohtml"]
-            \ }}
-
 "" http://layzie.hatenablog.com/entry/20130122/1358811539
 NeoBundle 'jiangmiao/simple-javascript-indenter'
 NeoBundle 'itspriddle/vim-jquery'
