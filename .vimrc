@@ -91,6 +91,7 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'pasela/unite-webcolorname'
 NeoBundle 'vim-scripts/nginx.vim'
 NeoBundle 'gcmt/wildfire.vim'
+NeoBundle 'chase/vim-ansible-yaml'
 
 """ ユーティリティ
 NeoBundle 'sudo.vim'
