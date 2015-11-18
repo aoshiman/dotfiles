@@ -98,6 +98,7 @@ NeoBundle 'sudo.vim'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'rhysd/clever-f.vim'
+NeoBundle 'kana/vim-arpeggio'
 
 call neobundle#end()
 filetype plugin indent on
@@ -137,7 +138,7 @@ nnoremap ; :
 nnoremap : ;
 
 " esc
-imap <c-j> <esc>
+" imap <c-j> <esc>
 
 " .vimrcを開く$MYVIMRCは~/.vimrcに関する環境変数
 nnoremap <Leader>v  :<C-u>edit $MYVIMRC<CR>
@@ -379,3 +380,8 @@ let g:lightline = {
 
 " Neobundle
 nnoremap <silent><Space>bu :NeoBundleUpdate<cr>
+
+" Arpeggio
+call arpeggio#load()
+let g:arpeggio_timeoutlen = 70
+Arpeggio inoremap jk <Esc>
