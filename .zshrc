@@ -19,7 +19,9 @@ umask 022
 #umask 022 は補数から022を引いたパーミッションを作成する設定
 
 #direnvの設定
-eval "$(direnv hook zsh)"
+if [ -n "$(which direnv)" ]; then
+    eval "$(direnv hook zsh)"
+fi
 ###}}}
 
 
