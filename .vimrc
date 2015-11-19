@@ -138,7 +138,7 @@ nnoremap ; :
 nnoremap : ;
 
 " esc
-" imap <c-j> <esc>
+imap <c-j> <esc>
 
 " .vimrcを開く$MYVIMRCは~/.vimrcに関する環境変数
 nnoremap <Leader>v  :<C-u>edit $MYVIMRC<CR>
