@@ -91,7 +91,8 @@ setopt auto_param_keys
 
 ###{{{ キーバインド
 
-bindkey -v
+bindkey -e
+#やはりshellにvimモードは向いてない...
 #zle-line-init() { zle -K vicmd; } ; zle -N zle-line-init
 
 # bindkey -v でもコマンドラインスタック使う
