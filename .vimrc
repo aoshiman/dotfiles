@@ -82,7 +82,7 @@ NeoBundleLazy "davidhalter/jedi-vim", {
 NeoBundle 'jiangmiao/simple-javascript-indenter'
 NeoBundle 'itspriddle/vim-jquery'
 NeoBundle 'jelera/vim-javascript-syntax'
-NeoBundle 'scrooloose/syntastic'
+" NeoBundle 'scrooloose/syntastic'
 " NeoBundle 'python_fold'
 
 " NeoBundle 'lilydjwg/colorizer'
