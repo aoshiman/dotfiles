@@ -7,22 +7,6 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" function! IncludePath(path)
-    " " define delimiter depends on platform
-    " if has('win16') || has('win32') || has('win64')
-        " let delimiter = ";"
-    " else
-        " let delimiter = ":"
-    " endif
-    " let pathlist = split($PATH, delimiter)
-    " if isdirectory(a:path) && index(pathlist, a:path) == -1
-        " let $PATH=a:path.delimiter.$PATH
-    " endif
-" endfunction
-" " ~/.pyenv/shims を $PATH に追加する
-" " これを行わないとpythonが正しく検索されない
-" call IncludePath(expand("~/.pyenv/shims"))
-
 """ ヘルプ
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'thinca/vim-ref'
