@@ -74,7 +74,7 @@ NeoBundle 'jelera/vim-javascript-syntax'
 " 悪いので気を付ける
 NeoBundle 'pasela/unite-webcolorname'
 NeoBundle 'vim-scripts/nginx.vim'
-NeoBundle 'gcmt/wildfire.vim'
+" NeoBundle 'gcmt/wildfire.vim'
 NeoBundle 'chase/vim-ansible-yaml'
 
 """ ユーティリティ
