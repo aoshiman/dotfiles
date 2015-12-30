@@ -9,7 +9,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 """ ヘルプ
 NeoBundle 'vim-jp/vimdoc-ja'
-NeoBundle 'thinca/vim-ref'
+" NeoBundle 'thinca/vim-ref'
 
 """ カラースキーム
 NeoBundle 'altercation/vim-colors-solarized'
@@ -27,7 +27,7 @@ NeoBundle 'sandeepcr529/Buffet.vim'
 NeoBundle 'banyan/recognize_charcode.vim'
 
 """ テンプレート
-NeoBundle 'mattn/sonictemplate-vim'
+" NeoBundle 'mattn/sonictemplate-vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'honza/vim-snippets'
@@ -44,7 +44,7 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'aoshiman/vim-virtualenv'
 NeoBundle 'mitechie/pyflakes-pathogen'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-surround'
+" NeoBundle 'tpope/vim-surround'
 NeoBundle 'Shougo/vimproc', {
   \ 'build' : {
     \ 'windows' : 'make -f make_mingw32.mak',
@@ -53,7 +53,7 @@ NeoBundle 'Shougo/vimproc', {
     \ 'unix' : 'make -f make_unix.mak',
   \ },
   \ }
-NeoBundle 'thinca/vim-quickrun'
+" NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'mattn/gist-vim'
 NeoBundle 'mattn/webapi-vim'
@@ -72,7 +72,7 @@ NeoBundle 'jelera/vim-javascript-syntax'
 " NeoBundle 'lilydjwg/colorizer'
 " colorizerを有効にしているとdicwin.vimのレスポンスが
 " 悪いので気を付ける
-NeoBundle 'pasela/unite-webcolorname'
+" NeoBundle 'pasela/unite-webcolorname'
 NeoBundle 'vim-scripts/nginx.vim'
 " NeoBundle 'gcmt/wildfire.vim'
 NeoBundle 'chase/vim-ansible-yaml'
@@ -82,7 +82,7 @@ NeoBundle 'sudo.vim'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'rhysd/clever-f.vim'
-NeoBundle 'kana/vim-arpeggio'
+" NeoBundle 'kana/vim-arpeggio'
 
 call neobundle#end()
 filetype plugin indent on
@@ -367,6 +367,6 @@ let g:lightline = {
 nnoremap <silent><Space>bu :NeoBundleUpdate<cr>
 
 " Arpeggio
-call arpeggio#load()
-let g:arpeggio_timeoutlen = 70
-Arpeggio inoremap jk <Esc>
+" call arpeggio#load()
+" let g:arpeggio_timeoutlen = 70
+" Arpeggio inoremap jk <Esc>
