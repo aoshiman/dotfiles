@@ -365,6 +365,7 @@ let g:lightline = {
 
 " Neobundle
 nnoremap <silent><Space>bu :NeoBundleUpdate<cr>
+nnoremap <silent><Space>bl :NeoBundleLog<cr>
 
 " Arpeggio
 " call arpeggio#load()
