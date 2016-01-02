@@ -12,7 +12,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 # eval "$(pyenv init -)"
 
 # local cache with pip
-export PIP_DOWNLOAD_CACHE=$HOME/.pip_download_cache
+# export PIP_DOWNLOAD_CACHE=$HOME/.pip_download_cache
 
 # set pythonstartup
 #export PYTHONSTARTUP=~/.pythonstartup
