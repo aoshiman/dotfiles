@@ -1,2 +1,2 @@
-# Setting for 'nvm' and 'node.js'
-source $HOME/.nvm/nvm.sh
+# for nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH
