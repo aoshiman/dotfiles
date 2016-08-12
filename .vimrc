@@ -33,9 +33,9 @@ Plug 'honza/vim-snippets'
 
 """ 開発支援
 Plug 'nathanaelkane/vim-indent-guides'
-" Plug 'jmcantrell/vim-virtualenv'
+Plug 'jmcantrell/vim-virtualenv'
 " Plug 'miyakogi/vim-virtualenv'
-Plug 'aoshiman/vim-virtualenv'
+" Plug 'aoshiman/vim-virtualenv'
 Plug 'mitechie/pyflakes-pathogen'
 Plug 'tpope/vim-fugitive'
 " Plug 'tpope/vim-surround'
