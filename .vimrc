@@ -351,6 +351,7 @@ let g:lightline = {
 
 " Vim-Plug
 nnoremap <silent><Space>pu :PlugUpdate<cr>
+nnoremap <silent><Space>pg :PlugUpgrade<cr>
 " Arpeggio
 " call arpeggio#load()
 " let g:arpeggio_timeoutlen = 70
