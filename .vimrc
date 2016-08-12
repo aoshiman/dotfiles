@@ -1,90 +1,76 @@
-if has('vim_starting')
-    set nocompatible               " Be iMproved
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
-" Let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
+call plug#begin('~/.vim/plugged')
 
 """ ヘルプ
-NeoBundle 'vim-jp/vimdoc-ja'
-" NeoBundle 'thinca/vim-ref'
+Plug 'vim-jp/vimdoc-ja'
+" Plug 'thinca/vim-ref'
 
 """ カラースキーム
-NeoBundle 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 
 """ ステータスライン
-" NeoBundle 'Lokaltog/vim-powerline'
-NeoBundle 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim'
 
 """ ファイラー・バッファ管理
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'sandeepcr529/Buffet.vim'
+Plug 'scrooloose/nerdtree',  { 'on': 'NERDTreeToggle' }
+Plug 'sandeepcr529/Buffet.vim'
 
 """ 文字コード自動判定
-NeoBundle 'banyan/recognize_charcode.vim'
+Plug 'banyan/recognize_charcode.vim'
 
+""" テンプレートエンジン
+Plug 'Shougo/neosnippet'
 """ テンプレート
-" NeoBundle 'mattn/sonictemplate-vim'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'honza/vim-snippets'
-NeoBundle 'mattn/emmet-vim'
+Plug 'honza/vim-snippets'
 
 """ 辞書
-" NeoBundle 'koron/dicwin-vim'
-NeoBundle 'mattn/excitetranslate-vim'
+" Plug 'koron/dicwin-vim'
 
 """ 開発支援
-NeoBundle 'nathanaelkane/vim-indent-guides'
-" NeoBundle 'jmcantrell/vim-virtualenv'
-" NeoBundle 'miyakogi/vim-virtualenv'
-NeoBundle 'aoshiman/vim-virtualenv'
-NeoBundle 'mitechie/pyflakes-pathogen'
-NeoBundle 'tpope/vim-fugitive'
-" NeoBundle 'tpope/vim-surround'
-NeoBundle 'Shougo/vimproc', {
-  \ 'build' : {
-    \ 'windows' : 'make -f make_mingw32.mak',
-    \ 'cygwin' : 'make -f make_cygwin.mak',
-    \ 'mac' : 'make -f make_mac.mak',
-    \ 'unix' : 'make -f make_unix.mak',
-  \ },
-  \ }
-" NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'mattn/gist-vim'
-NeoBundle 'mattn/webapi-vim'
-NeoBundleLazy "davidhalter/jedi-vim", {
-            \ "autoload": {
-            \   "filetypes": ["python", "python3", "djangohtml"]
-            \ }}
+Plug 'nathanaelkane/vim-indent-guides'
+" Plug 'jmcantrell/vim-virtualenv'
+" Plug 'miyakogi/vim-virtualenv'
+Plug 'aoshiman/vim-virtualenv'
+Plug 'mitechie/pyflakes-pathogen'
+Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-surround'
+Plug 'Shougo/vimproc', { 'do': 'make' }
+" Plug 'thinca/vim-quickrun'
+Plug 'scrooloose/nerdcommenter'
+Plug 'mattn/gist-vim'
+Plug 'mattn/webapi-vim'
+Plug 'davidhalter/jedi-vim' , { 'for': 'python' }
 
 "" http://layzie.hatenablog.com/entry/20130122/1358811539
-NeoBundle 'jiangmiao/simple-javascript-indenter'
-NeoBundle 'itspriddle/vim-jquery'
-NeoBundle 'jelera/vim-javascript-syntax'
-" NeoBundle 'scrooloose/syntastic'
-" NeoBundle 'python_fold'
+Plug 'jiangmiao/simple-javascript-indenter'
+Plug 'itspriddle/vim-jquery'
+Plug 'jelera/vim-javascript-syntax'
+" Plug 'scrooloose/syntastic'
+" Plug 'python_fold'
 
-" NeoBundle 'lilydjwg/colorizer'
+" Plug 'lilydjwg/colorizer'
 " colorizerを有効にしているとdicwin.vimのレスポンスが
 " 悪いので気を付ける
-" NeoBundle 'pasela/unite-webcolorname'
-NeoBundle 'vim-scripts/nginx.vim'
-" NeoBundle 'gcmt/wildfire.vim'
-NeoBundle 'chase/vim-ansible-yaml'
+" Plug 'pasela/unite-webcolorname'
+Plug 'vim-scripts/nginx.vim'
+" Plug 'gcmt/wildfire.vim'
+Plug 'chase/vim-ansible-yaml'
 
 """ ユーティリティ
-NeoBundle 'sudo.vim'
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'rhysd/clever-f.vim'
-" NeoBundle 'kana/vim-arpeggio'
+Plug 'sudo.vim'
+Plug 'Shougo/vimshell'
+Plug 'Shougo/neocomplcache'
+Plug 'rhysd/clever-f.vim'
+" Plug 'kana/vim-arpeggio'
 
-call neobundle#end()
+" Add plugins to &runtimepath
+call plug#end()
+
 filetype plugin indent on
 
 """ シンタックスの色づけ有効
@@ -363,10 +349,8 @@ let g:lightline = {
             \   }
             \ }
 
-" Neobundle
-nnoremap <silent><Space>bu :NeoBundleUpdate<cr>
-nnoremap <silent><Space>bl :NeoBundleLog<cr>
-
+" Vim-Plug
+nnoremap <silent><Space>pu :PlugUpdate<cr>
 " Arpeggio
 " call arpeggio#load()
 " let g:arpeggio_timeoutlen = 70
