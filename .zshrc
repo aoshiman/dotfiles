@@ -281,6 +281,13 @@ if [ -d .zshrc.d ]; then
     done
 fi
 
+###{{{ load emoji-cli
+if [ -d .emoji-cli ]; then
+    source .emoji-cli/emoji-cli.zsh
+fi
+
+
+
 ###}}}
 
 ###{{{ config for cds and percol
