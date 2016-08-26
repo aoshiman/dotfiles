@@ -234,41 +234,6 @@ vmap <Leader>c <Plug>NERDCommenterToggle
 """ Beffet.vim
 nnoremap <silent> ,, :Bufferlist<CR>
 
-""" Config for Vim-ref
-"" Config for Ref webdict
-" URL http://www.karakaram.com/20120726-vim-ref
-" URL2 http://www.karakaram.com/ref-webdict
-" ヴィジュアルモード等でヤンクした単語をコマンドラインモード
-" にペースト C-R + "
-
-let g:ref_source_webdict_sites = {
-\   'je': {
-\     'url': 'http://dictionary.infoseek.ne.jp/jeword/%s',
-\   },
-\   'ej': {
-\     'url': 'http://dictionary.infoseek.ne.jp/ejword/%s',
-\   },
-\   'wiki': {
-\     'url': 'http://ja.wikipedia.org/wiki/%s',
-\   },
-\ }
-
-" デフォルトサイト
-let g:ref_source_webdict_sites.default = 'ej'
-
-" 出力に対するフィルタ。最初の数行を削除
-function! g:ref_source_webdict_sites.je.filter(output)
-  return join(split(a:output, "\n")[15 :], "\n")
-endfunction
-function! g:ref_source_webdict_sites.ej.filter(output)
-  return join(split(a:output, "\n")[15 :], "\n")
-endfunction
-function! g:ref_source_webdict_sites.wiki.filter(output)
-  return join(split(a:output, "\n")[17 :], "\n")
-endfunction
-
-nnoremap <Leader>e :<C-u>Ref webdict ej<Space>
-
 """ Config for Jedi.vim
 let g:jedi#documentation_command = "<leader>j"
 " let g:jedi#show_function_definition = "0"
@@ -301,8 +266,8 @@ if has('conceal')
 endif
 
 " スニペットファイルの配置場所
-let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+" let g:neosnippet#enable_snipmate_compatibility = 1
+" let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
 " for gist-vim
 if has("unix")
