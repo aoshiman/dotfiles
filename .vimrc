@@ -1,3 +1,4 @@
+""" Vim Plug
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
       \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -8,7 +9,6 @@ call plug#begin('~/.vim/plugged')
 
 """ ヘルプ
 Plug 'vim-jp/vimdoc-ja'
-" Plug 'thinca/vim-ref'
 
 """ カラースキーム
 Plug 'altercation/vim-colors-solarized'
@@ -266,8 +266,12 @@ if has('conceal')
 endif
 
 " スニペットファイルの配置場所
+let g:neosnippet#disable_runtime_snippets = {
+\   '_' : 1,
+\ }
 " let g:neosnippet#enable_snipmate_compatibility = 1
-" let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets'
+
 
 " for gist-vim
 if has("unix")
