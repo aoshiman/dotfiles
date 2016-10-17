@@ -292,6 +292,12 @@ fi
 ###}}}
 
 
+###{{{ Enable aws-cli command completion
+if [ -f /usr/local/bin/aws_zsh_completer.sh ]; then
+    source /usr/local/bin/aws_zsh_completer.sh
+fi
+
+
 ###{{{ config for cds and percol
 # cdr
 autoload -U is-at-least
