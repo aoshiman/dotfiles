@@ -4,7 +4,7 @@
 
 ###{{{ 補完宣言
 #zsh function
-fpath=($HOME/.zsh/zsh-completions/src $fpath)
+fpath=($HOME/.zsh/zsh-completions/src(N-/) $fpath)
 autoload -Uz compinit
 compinit -u
 
